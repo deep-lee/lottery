@@ -7,7 +7,7 @@ function login(){
     $.ajax({
         type:"get",
         contentType : "text/html;charset=utf-8",
-        url:"../back/login.php",
+        url:"./back/login.php",
         dataType:"json",
         data:postData,
         success:function(data){
