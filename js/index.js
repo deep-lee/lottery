@@ -26,7 +26,7 @@ function change_password() {
     $.ajax({
       type : "get",
       contentType : "text/html;charset=utf-8",
-      url : "../back/change_password.php",
+      url : "./back/change_password.php",
       data : requestData,
       dataType : "json",
       success : function(data) {
@@ -61,7 +61,7 @@ function clear_cache() {
   $.ajax({
     type : "get",
     contentType : "text/html;charset=utf-8",
-    url : "../back/clear_cache.php",
+    url : "./back/clear_cache.php",
     data : requestData,
     dataType : "json",
     success : function(data) {
@@ -99,7 +99,7 @@ function set_show_urls() {
     $.ajax({
       type : "get",
       contentType : "text/html;charset=utf-8",
-      url : "../back/set_appids_url.php",
+      url : "./back/set_appids_url.php",
       data : requestData,
       dataType : "json",
       success : function(data) {
@@ -137,7 +137,7 @@ function set_not_show() {
     $.ajax({
       type : "get",
       contentType : "text/html;charset=utf-8",
-      url : "../back/set_appids_not_show.php",
+      url : "./back/set_appids_not_show.php",
       data : requestData,
       dataType : "json",
       success : function(data) {
@@ -330,7 +330,7 @@ var ButtonInit = function () {
                 $.ajax({
                   type : "get",
                   contentType : "text/html;charset=utf-8",
-                  url : "../back/add.php",
+                  url : "./back/add.php",
                   data : requestData,
                   dataType : "json",
                   success : function(data) {
@@ -406,7 +406,7 @@ var ButtonInit = function () {
                 $.ajax({
                   type : "get",
                   contentType : "text/html;charset=utf-8",
-                  url : "../back/update.php",
+                  url : "./back/update.php",
                   data : requestData,
                   dataType : "json",
                   success : function(data) {
@@ -454,7 +454,7 @@ var ButtonInit = function () {
     					$.ajax({
     						type : "get",
     						contentType : "text/html;charset=utf-8",
-    						url : "../back/del.php",
+    						url : "./back/del.php",
     						data : requestData,
     						dataType : "json",
     						success : function(data) {
