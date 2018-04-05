@@ -309,7 +309,7 @@ function check_register_params_empty() {
   var flag = true;
   if ($("#txt_register_username").val() == '') {
     flag = false;
-  }else if ($("#txt_register_password").val() == '') {
+  } else if ($("#txt_register_password").val() == '') {
     flag = false;
   }
 
@@ -356,6 +356,45 @@ function check_edit_params_empty() {
   }
 
   return flag;
+}
+
+function check_multi_update_params_all_empty() {
+  var flag = false;
+  if ($("#txt_multi_update_url").val() != '') {
+    flag = true;
+  } else if ($("input[name='multi_update_show']:checked").val() != null) {
+    flag = true;
+  } else if ($("#txt_multi_update_qqnumber").val() != '') {
+    flag = true;
+  } else if ($("#txt_milti_update_imagelist").val() != '') {
+    flag = true;
+  } else if ($("#txt_multi_update_marqueeContent").val() != '') {
+    flag = true;
+  }
+
+  return flag;
+}
+
+function get_multi_update_params() {
+  var arrselections = $("#tb_departments").bootstrapTable(
+    'getSelections');
+
+  // ids
+  var arrayLength = arrselections.length;
+  var ids = '';
+  for (var i = 0; i < arrayLength; i++) {
+      ids += arrselections[i].id + ',';
+
+  var requestData = {
+    "id": ids,
+    "url": $("#txt_multi_update_url").val(),
+    "qqNumber": $("#txt_multi_update_qqnumber").val(),
+    "show": $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0,
+    "imgList": $("#txt_milti_update_imagelist").val(),
+    "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
+  };
+
+  return requestData;
 }
 
 function get_edit_params() {
@@ -428,7 +467,7 @@ var ButtonInit = function () {
           });
         }
       });
-      
+
     $("#btn_multi_update").click(
       function () {
         var arrselections = $("#tb_departments").bootstrapTable(
@@ -438,10 +477,48 @@ var ButtonInit = function () {
           alert("请选择需要编辑的条目");
           return;
         }
-        
-        
+
         $('#myModal4').modal();
       });
+
+    $("#btn_multi_update_submit").click(
+      function () {
+        if (!check_multi_update_params_all_empty()) {
+          alert("请至少填写一个");
+        } else {
+          var requestData = get_multi_update_params();
+          $.ajax({
+            type: "get",
+            contentType: "text/html;charset=utf-8",
+            url: "./back/update_multiple.php",
+            data: requestData,
+            dataType: "json",
+            success: function (data) {
+              var rt_code = data.rt_code;
+              if (rt_code == -1) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == 0) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == -2) {
+                location.href = "./login.html";
+              } else {
+                alert("修改成功")
+                console.log("Update success");
+              }
+              $('#myModal4').modal('hide');
+              $('#tb_departments').bootstrapTable('refresh');
+            },
+            error: function () {
+              toastr.error('Error');
+            },
+            complete: function () {
+
+            }
+
+          });
+        }
+      });
+
     $("#btn_edit").click(
       function () {
         var arrselections = $("#tb_departments").bootstrapTable(
