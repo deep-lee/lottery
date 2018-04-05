@@ -264,6 +264,9 @@ var TableInit = function () {
         field: 'reserve3',
         title: '预留3'
       }, {
+        field: 'username',
+        title: '创建子账户'
+      }, {
         field: 'request_num',
         title: '请求次数'
       }, {
@@ -272,7 +275,7 @@ var TableInit = function () {
       },]
     });
   };
-
+  
   //得到查询的参数
   oTableInit.queryParams = function (params) {
     var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的

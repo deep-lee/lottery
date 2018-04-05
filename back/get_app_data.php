@@ -31,7 +31,9 @@ if (check_user_login_out_of_time() == false) {
     }
     $sql .= " limit $offset,$limit";
   } else {
-    $sql = "select * from lottery where (url like '%".$search_text."%' or
+    $sql = "select l.*, a.username from lottery l 
+            left join admin a on l.create_user_id=a.id 
+            where (url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             marqueeContent like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
