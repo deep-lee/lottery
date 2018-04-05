@@ -15,6 +15,7 @@ if (check_user_login_out_of_time() == false) {
       isset($_GET['imgList']) &&
       isset($_GET['marqueeContent'])) {
     $ids = $_GET['ids'];
+    $ids = rtrim($ids,", ");
     $url = $_GET['url'];
 
     $show = $_GET['show'];
@@ -45,7 +46,7 @@ if (check_user_login_out_of_time() == false) {
         $sql .=  ", marqueeContent = '$marqueeContent'";
     }
 
-    $sql .= "where id in ($ids)";
+    $sql .= " where id in ($ids)";
 
     echo $sql;
 
