@@ -385,7 +385,7 @@ function get_multi_update_params() {
     ids += arrselections[i].id + ',';
 
     var requestData = {
-      "id": ids,
+      "ids": ids,
       "url": $("#txt_multi_update_url").val(),
       "qqNumber": $("#txt_multi_update_qqnumber").val(),
       "show": $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0,
