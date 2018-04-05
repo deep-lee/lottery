@@ -389,7 +389,7 @@ function get_multi_update_params() {
     ids += arrselections[i].id + ',';
   }
 
-  var show = undefined;
+  var show = nil;
   if ($("input[name='multi_update_show']:checked").val() == 'Yes' || $("input[name='multi_update_show']:checked").val() == 'No') {
     show = $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0;
   }
@@ -402,6 +402,8 @@ function get_multi_update_params() {
     "imgList": $("#txt_milti_update_imagelist").val(),
     "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
   };
+
+  console.log(requestData);
 
   return requestData;
 }
