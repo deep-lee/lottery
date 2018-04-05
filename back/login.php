@@ -22,9 +22,7 @@ if (isset($_GET['username']) &&
       } else {
 
         $row = mysql_fetch_row($result);
-
-        echo $row;
-
+        
         session_start();
         $_SESSION["admin"] = true;
         $_SESSION["login_user_id"] = $row['id'];
