@@ -15,18 +15,32 @@ if (check_user_login_out_of_time() == false) {
 
         $login_user_id = get_login_user_id();
         if ($login_user_id == 1) {
-            $sql = "insert into admin(username, password) values(
-                '$username', '$password'
-            )";
-    
-            // echo $sql;
-    
-            $result = mysql_query($sql);
-            if ($result == false) {
+            // 首先看username有没有重复的
+            $sql_check = "select * from admin where username='$username'";
+            $result_check = mysql_query($sql_check);
+            if ($result_check == false) {
                 $returnData['rt_code'] = 0;
             } else {
-                $returnData['rt_code'] = 1;
+                if (mysql_num_rows($result_check) == 0) {
+                    // 没有注册过
+                    $sql = "insert into admin(username, password) values(
+                        '$username', '$password'
+                    )";
+            
+                    // echo $sql;
+            
+                    $result = mysql_query($sql);
+                    if ($result == false) {
+                        $returnData['rt_code'] = 0;
+                    } else {
+                        $returnData['rt_code'] = 1;
+                    }
+                } else {
+                    $returnData['rt_code'] = 4;
+                }
             }
+
+            
         } else {
             $returnData['rt_code'] = 3;
         }

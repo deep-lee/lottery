@@ -656,6 +656,8 @@ var ButtonInit = function () {
                 alert("Something wrong, please contact dev.")
               } else if (rt_code == 3) {
                 alert("注册失败！目前只支持主帐号注册子账号")
+              } else if (rt_code == 4) {
+                alert("注册失败！用户名已被注册")
               } else {
                 alert("注册成功")
                 console.log("Register success");
