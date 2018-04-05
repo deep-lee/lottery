@@ -15,6 +15,9 @@ if (check_user_login_out_of_time() == false) {
       isset($_GET['qqNumber']) &&
       isset($_GET['imgList']) &&
       isset($_GET['marqueeContent']) &&
+      isset($_GET['reserve1']) &&
+      isset($_GET['reserve2']) &&
+      isset($_GET['reserve3']) &&
       isset($_GET['comment'])) {
     $url = $_GET['url'];
     $appid = $_GET['appid'];
@@ -25,6 +28,10 @@ if (check_user_login_out_of_time() == false) {
     $qqNumber = $_GET['qqNumber'];
     $imgList = $_GET['imgList'];
     $marqueeContent = $_GET['marqueeContent'];
+
+    $reserve1 = $_GET['reserve1'];
+    $reserve2 = $_GET['reserve2'];
+    $reserve3 = $_GET['reserve3'];
 
     date_default_timezone_set('Asia/Shanghai');
     $createAt =  date('Y-m-d H:i:s');
@@ -41,8 +48,8 @@ if (check_user_login_out_of_time() == false) {
         // 有重复的appid
         $returnData['rt_code'] = 2;
       } else {
-        $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment, ImgList, marqueeContent, qqNumber) values
-                ('$url', $show, '$type', '$appid', '$createAt', '$comment', '$imgList', '$marqueeContent', '$qqNumber')";
+        $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment, ImgList, marqueeContent, qqNumber, reserve1, reserve2, reserve3) values
+                ('$url', $show, '$type', '$appid', '$createAt', '$comment', '$imgList', '$marqueeContent', '$qqNumber', '$reserve1', '$reserve2', '$reserve3')";
         $result = mysql_query($sql);
         if ($result == false) {
           $returnData['rt_code'] = 0;
