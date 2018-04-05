@@ -31,11 +31,11 @@ if (check_user_login_out_of_time() == false) {
             appid like '%".$search_text."%' or
             comment like '%".$search_text."%' limit $offset,$limit";
     if ($login_user_id != 1) {
-      $sql .= " where create_user_id=$login_user_id";
+      $sql .= " where create_user_id='$login_user_id'";
     }
   }
 
-  // echo $sql;
+  echo $sql;
 
   $result = mysql_query($sql);
 
@@ -48,14 +48,19 @@ if (check_user_login_out_of_time() == false) {
 
   // get total rows
 
-  $sql_total_rows = "select count(*) as total from lottery";
   if ($search_text == '') {
     $sql_total_rows = "select count(*) as total from lottery";
+    if ($login_user_id != 1) {
+      $sql_total_rows .= " where create_user_id=$login_user_id";
+    }
   } else {
     $sql_total_rows = "select count(*) as total from lottery
             where url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             comment like '%".$search_text."%' limit $offset,$limit";
+    if ($login_user_id != 1) {
+      $sql_total_rows .= " where create_user_id=$login_user_id";
+    }
   }
 
   $result_total_rows = mysql_query($sql_total_rows);
