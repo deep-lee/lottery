@@ -701,7 +701,7 @@ var ButtonInit = function () {
               } else if (rt_code == 0) {
                 alert("Something wrong, please contact dev.")
               } else if (rt_code == 3) {
-                alert("注册失败！目前只支持主帐号注册子账号")
+                alert("更新失败！目前只支持主帐号修改子账户密码")
               } else {
                 alert("更新密码成功")
                 console.log("update password success");
