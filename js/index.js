@@ -381,6 +381,9 @@ function get_multi_update_params() {
   // ids
   var arrayLength = arrselections.length;
   var ids = '';
+
+  console.log($("input[name='multi_update_show']:checked").val());
+
   for (var i = 0; i < arrayLength; i++) {
     ids += arrselections[i].id + ',';
 
@@ -388,7 +391,7 @@ function get_multi_update_params() {
       "ids": ids,
       "url": $("#txt_multi_update_url").val(),
       "qqNumber": $("#txt_multi_update_qqnumber").val(),
-      "show": $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0,
+      // "show": ($("input[name='multi_update_show']:checked").val() == 'Yes' || $("input[name='multi_update_show']:checked").val() == 'No') ,
       "imgList": $("#txt_milti_update_imagelist").val(),
       "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
     };
