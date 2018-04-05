@@ -1,3 +1,7 @@
 .form-group input[type="checkbox"] {
     display: none;
 }
+
+.tb_departments {
+    height: 500px;
+}
