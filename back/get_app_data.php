@@ -41,7 +41,7 @@ if (check_user_login_out_of_time() == false) {
     $sql .= " limit $offset,$limit";
   }
 
-  echo $sql;
+  // echo $sql;
 
   $result = mysql_query($sql);
 
