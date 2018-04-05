@@ -13,6 +13,9 @@ if (check_user_login_out_of_time() == false) {
       isset($_GET['appid']) &&
       isset($_GET['type']) &&
       isset($_GET['show']) &&
+      isset($_GET['qqNumber']) &&
+      isset($_GET['imgList']) &&
+      isset($_GET['marqueeContent']) &&
       isset($_GET['comment'])) {
     $id = $_GET['id'];
     $url = $_GET['url'];
@@ -20,13 +23,18 @@ if (check_user_login_out_of_time() == false) {
     $type = $_GET['type'];
     $show = $_GET['show'];
     $comment = $_GET['comment'];
+
+    $qqNumber = $_GET['qqNumber'];
+    $imgList = $_GET['imgList'];
+    $marqueeContent = $_GET['marqueeContent'];
+
     date_default_timezone_set('Asia/Shanghai');
     $updateAt = date('Y-m-d H:i:s');
 
     // echo $id." ".$url." ".$appid." ".$type." ".$show." ".comment." ".$updateAt;
 
     $sql = "update lottery set url = '$url', appid='$appid', type='$type',
-            show_url=$show, comment='$comment', updateAt='$updateAt'
+            show_url=$show, comment='$comment', updateAt='$updateAt', ImgList='$imgList', marqueeContent='$marqueeContent', qqNumber='$qqNumber'
             where id=$id";
 
     $result = mysql_query($sql);

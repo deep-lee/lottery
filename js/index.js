@@ -269,8 +269,6 @@ if ($("#txt_add_app_id").val() == '') {
   flag = false;
 } else if ($("input[name='add_type']:checked").val() == null) {
   flag = false;
-} else if ($("#txt_add_comment").val() == '') {
-  flag = false;
 }
 
 return flag;
@@ -283,6 +281,9 @@ var requestData = {
   "type": $("input[name='add_type']:checked").val() == 'android' ? "android" : 'ios',
   "show": $("input[name='add_show']:checked").val() == 'Yes' ? 1 : 0,
   "comment": $("#txt_add_comment").val(),
+  "qqNumber": $("#txt_add_qqnumber").val(),
+  "imgList": $("#txt_add_imagelist").val(),
+  "marqueeContent": $("#txt_add_marqueeContent").val(),
 };
 
 return requestData;
@@ -297,8 +298,6 @@ if ($("#txt_edit_app_id").val() == '') {
 } else if ($("#txt_edit_url").val() == '') {
   flag = false;
 } else if ($("input[name='edit_type']:checked").val() == null) {
-  flag = false;
-} else if ($("#txt_edit_comment").val() == '') {
   flag = false;
 }
 
@@ -315,6 +314,9 @@ var requestData = {
   "type": $("input[name='edit_type']:checked").val() == 'android' ? "android" : 'ios',
   "show": $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0,
   "comment": $("#txt_edit_comment").val(),
+  "qqNumber": $("#txt_edit_qqnumber").val(),
+  "imgList": $("#txt_edit_imagelist").val(),
+  "marqueeContent": $("#txt_edit_marqueeContent").val(),
 };
 
 return requestData;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,7 @@
     <link href="css/index.css" rel="stylesheet" />
     <script src="js/index.js"></script>
 </head>
+
 <body>
     <div class="panel-body" style="padding-bottom:0px;">
         <div class="panel panel-default">
@@ -31,9 +33,7 @@
                             <input type="text" class="form-control" id="txt_search">
                         </div>
                         <div class="col-sm-4" style="text-align:left;">
-                            <button type="button" style="margin-left:50px"
-                            id="btn_query" class="btn btn-primary"
-                            onclick="search();">查询</button>
+                            <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary" onclick="search();">查询</button>
                         </div>
                     </div>
                 </form>
@@ -68,9 +68,7 @@
                         <input type="text" class="form-control" id="txt_set_show_url">
                     </div>
                     <div class="col-sm-4" style="text-align:left;">
-                        <button type="button" style="margin-left:50px"
-                        id="btn_query1" class="btn btn-primary"
-                        onclick="set_show_urls();">Go</button>
+                        <button type="button" style="margin-left:50px" id="btn_query1" class="btn btn-primary" onclick="set_show_urls();">Go</button>
                     </div>
                 </div>
             </form>
@@ -87,9 +85,7 @@
                         <input type="text" class="form-control" placeholder="App ID之间以英文逗号,隔开，如111,222" id="txt_set_not_show_appids">
                     </div>
                     <div class="col-sm-4" style="text-align:left;">
-                        <button type="button" style="margin-left:50px"
-                        id="btn_query2" class="btn btn-primary"
-                        onclick="set_not_show();">Go</button>
+                        <button type="button" style="margin-left:50px" id="btn_query2" class="btn btn-primary" onclick="set_not_show();">Go</button>
                     </div>
                 </div>
             </form>
@@ -106,15 +102,13 @@
                         <input type="text" class="form-control" id="txt_new_password">
                     </div>
                     <div class="col-sm-4" style="text-align:left;">
-                        <button type="button" style="margin-left:50px"
-                        id="btn_query" class="btn btn-primary"
-                        onclick="change_password();">Go</button>
+                        <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary" onclick="change_password();">Go</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading">缓存</div>
         <div class="panel-body">
@@ -125,9 +119,7 @@
                         <input type="text" class="form-control" placeholder="空则清空所有缓存，App ID之间以英文逗号,隔开，如111,222" id="txt_cache_appid">
                     </div>
                     <div class="col-sm-4" style="text-align:left;">
-                        <button type="button" style="margin-left:50px"
-                        id="btn_query" class="btn btn-primary"
-                        onclick="clear_cache();">清空</button>
+                        <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary" onclick="clear_cache();">清空</button>
                     </div>
                 </div>
             </form>
@@ -135,108 +127,137 @@
     </div>
 
     <form class="add_form">
-  		    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  		        <div class="modal-dialog" role="document">
-  		            <div class="modal-content">
-  		                <div class="modal-header">
-  		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  		                    <h4 class="modal-title" id="myModalLabel">新增</h4>
-  		                </div>
-  		                <div class="modal-body">
-  		                    <div class="form-group">
-  		                        <label for="txt_price">应用ID</label>
-  		                        <input type="text" name="txt_app_id" class="form-control" id="txt_add_app_id" placeholder="App id">
-  		                    </div>
-  		                    <div class="form-group">
-                              <label for="txt_quantity">是否跳转</label><br>
-                              <label class="radio-inline">
-                                <input type="radio" name="add_show" id="optradio_add_show_yes" value="Yes">
-                                Yes
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="add_show" id="optradio_add_show_false" value="No">
-                                No
-                              </label>
-  		                    </div>
-                          <div class="form-group">
-  		                        <label for="txt_price">跳转链接</label>
-  		                        <input type="text" name="txt_url" class="form-control" id="txt_add_url" placeholder="URL">
-  		                    </div>
-                          <div class="form-group">
-  		                        <label for="txt_price">应用平台</label><br>
-                              <label class="radio-inline">
-                                <input type="radio" name="add_type" id="optradio_add_ios" value="iOS">
-                                iOS
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="add_type" id="optradio_add_android" value="android">
-                                android
-                              </label>
-  		                    </div>
-                          <div class="form-group">
-  		                        <label for="txt_price">备注</label>
-  		                        <input type="text" name="txt_comment" class="form-control" id="txt_add_comment" placeholder="Comment">
-  		                    </div>
-  		                </div>
-  		                <div class="modal-footer">
-  		                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
-  		                    <button type="button" id="btn_add_submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
-  		                </div>
-  		            </div>
-  		        </div>
-  		    </div>
-  		</form>
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">新增</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txt_price">应用ID</label>
+                            <input type="text" name="txt_app_id" class="form-control" id="txt_add_app_id" placeholder="App id">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_quantity">是否跳转</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="add_show" id="optradio_add_show_yes" value="Yes"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="add_show" id="optradio_add_show_false" value="No"> No
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">跳转链接</label>
+                            <input type="text" name="txt_url" class="form-control" id="txt_add_url" placeholder="URL">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">应用平台</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="add_type" id="optradio_add_ios" value="iOS"> iOS
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="add_type" id="optradio_add_android" value="android"> android
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_imagelist">轮播图</label>
+                            <input type="text" name="txt_imagelist" class="form-control" id="txt_add_imagelist" placeholder="以;分割">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_imagelist">跑马灯</label>
+                            <input type="text" name="txt_marqueeContent" class="form-control" id="txt_add_marqueeContent" placeholder="跑马灯文字">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_qqnumber">客服QQ</label>
+                            <input type="text" name="txt_qqnumber" class="form-control" id="txt_add_qqnumber" placeholder="客服QQ">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">备注</label>
+                            <input type="text" name="txt_comment" class="form-control" id="txt_add_comment" placeholder="Comment">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
+                            <button type="button" id="btn_add_submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     <form class="edit_form">
-  		    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  		        <div class="modal-dialog" role="document">
-  		            <div class="modal-content">
-  		                <div class="modal-header">
-  		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  		                    <h4 class="modal-title" id="myModalLabel">更新</h4>
-  		                </div>
-                      <div class="modal-body">
-  		                    <div class="form-group">
-  		                        <label for="txt_price">应用ID</label>
-  		                        <input type="text" name="txt_app_id" class="form-control" id="txt_edit_app_id" placeholder="App id">
-  		                    </div>
-  		                    <div class="form-group">
-  		                        <label for="txt_quantity">是否跳转</label><br>
-                              <label class="radio-inline">
-                                <input type="radio" name="edit_show" id="optradio_edit_show_yes" value="Yes">
-                                Yes
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="edit_show" id="optradio_edit_show_false" value="No">
-                                No
-                              </label>
-  		                    </div>
-                          <div class="form-group">
-  		                        <label for="txt_price">跳转链接</label>
-  		                        <input type="text" name="txt_url" class="form-control" id="txt_edit_url" placeholder="URL">
-  		                    </div>
-                          <div class="form-group">
-  		                        <label for="txt_price">应用平台</label><br>
-                              <label class="radio-inline">
-                                <input type="radio" name="edit_type" id="optradio_edit_ios" value="iOS">
-                                iOS
-                              </label>
-                              <label class="radio-inline">
-                                <input type="radio" name="edit_type" id="optradio_edit_android" value="android">
-                                android
-                              </label>
-  		                    </div>
-                          <div class="form-group">
-  		                        <label for="txt_price">备注</label>
-  		                        <input type="text" name="txt_comment" class="form-control" id="txt_edit_comment" placeholder="Comment">
-  		                    </div>
-  		                </div>
-  		                <div class="modal-footer">
-  		                    <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
-  		                    <button type="button" id="btn_edit_submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
-  		                </div>
-  		            </div>
-  		        </div>
-  		    </div>
-  		</form>
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">更新</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txt_price">应用ID</label>
+                            <input type="text" name="txt_app_id" class="form-control" id="txt_edit_app_id" placeholder="App id">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_quantity">是否跳转</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="edit_show" id="optradio_edit_show_yes" value="Yes"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="edit_show" id="optradio_edit_show_false" value="No"> No
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">跳转链接</label>
+                            <input type="text" name="txt_url" class="form-control" id="txt_edit_url" placeholder="URL">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">应用平台</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="edit_type" id="optradio_edit_ios" value="iOS"> iOS
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="edit_type" id="optradio_edit_android" value="android"> android
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_imagelist">轮播图</label>
+                            <input type="text" name="edit_imagelist" class="form-control" id="txt_edit_imagelist" placeholder="以;分割">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_imagelist">跑马灯</label>
+                            <input type="text" name="edit_marqueeContent" class="form-control" id="txt_edit_marqueeContent" placeholder="跑马灯文字">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_qqnumber">客服QQ</label>
+                            <input type="text" name="edit_qqnumber" class="form-control" id="txt_edit_qqnumber" placeholder="客服QQ">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">备注</label>
+                            <input type="text" name="txt_comment" class="form-control" id="txt_edit_comment" placeholder="Comment">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
+                            <button type="button" id="btn_edit_submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </body>
+
 </html>

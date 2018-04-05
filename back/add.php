@@ -12,12 +12,20 @@ if (check_user_login_out_of_time() == false) {
       isset($_GET['appid']) &&
       isset($_GET['type']) &&
       isset($_GET['show']) &&
+      isset($_GET['qqNumber']) &&
+      isset($_GET['imgList']) &&
+      isset($_GET['marqueeContent']) &&
       isset($_GET['comment'])) {
     $url = $_GET['url'];
     $appid = $_GET['appid'];
     $type = $_GET['type'];
     $show = $_GET['show'];
     $comment = $_GET['comment'];
+
+    $qqNumber = $_GET['qqNumber'];
+    $imgList = $_GET['imgList'];
+    $marqueeContent = $_GET['marqueeContent'];
+
     date_default_timezone_set('Asia/Shanghai');
     $createAt =  date('Y-m-d H:i:s');
 
@@ -33,8 +41,8 @@ if (check_user_login_out_of_time() == false) {
         // 有重复的appid
         $returnData['rt_code'] = 2;
       } else {
-        $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment) values
-                ('$url', $show, '$type', '$appid', '$createAt', '$comment')";
+        $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment, ImgList, marqueeContent, qqNumber) values
+                ('$url', $show, '$type', '$appid', '$createAt', '$comment', '$imgList', '$marqueeContent', '$qqNumber')";
         $result = mysql_query($sql);
         if ($result == false) {
           $returnData['rt_code'] = 0;
