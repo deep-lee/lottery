@@ -210,7 +210,7 @@ var TableInit = function () {
       queryParams: oTableInit.queryParams,//传递参数（*）
       sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
       pageNumber: 1,                       //初始化加载第一页，默认第一页
-      pageSize: 10,                       //每页的记录行数（*）
+      pageSize: 50,                       //每页的记录行数（*）
       pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
       // search: true,                    //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
       strictSearch: true,
@@ -218,7 +218,7 @@ var TableInit = function () {
       showRefresh: true,                  //是否显示刷新按钮
       minimumCountColumns: 2,             //最少允许的列数
       clickToSelect: true,                //是否启用点击选中行
-      height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+      height: 1000,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
       uniqueId: "id",                     //每一行的唯一标识，一般为主键列
       showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
       cardView: false,                    //是否显示详细视图
@@ -265,7 +265,7 @@ var TableInit = function () {
         title: '预留3'
       }, {
         field: 'username',
-        title: '创建子账户'
+        title: '创建账户'
       }, {
         field: 'request_num',
         title: '请求次数'
