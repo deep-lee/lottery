@@ -304,6 +304,27 @@ function check_add_params_empty() {
   return flag;
 }
 
+function check_register_params_empty() {
+  // alert($("input[name='add_type']:checked").val());
+  var flag = true;
+  if ($("#txt_register_username").val() == '') {
+    flag = false;
+  }else if ($("#txt_register_password").val() == '') {
+    flag = false;
+  }
+
+  return flag;
+}
+
+function get_register_params() {
+  var requestData = {
+    "username": $("#txt_register_username").val(),
+    "password": $("#txt_register_password").val(),
+  };
+
+  return requestData;
+}
+
 function get_add_params() {
   var requestData = {
     "url": $("#txt_add_url").val(),
@@ -488,6 +509,43 @@ var ButtonInit = function () {
           });
         }
       });
+
+    $("#btn_register_submit").click(
+      function () {
+        if (!check_register_params_empty()) {
+          alert("请填写完整");
+        } else {
+          var requestData = get_register_params();
+          $.ajax({
+            type: "get",
+            contentType: "text/html;charset=utf-8",
+            url: "./back/register.php",
+            data: requestData,
+            dataType: "json",
+            success: function (data) {
+              var rt_code = data.rt_code;
+              if (rt_code == -1) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == 0) {
+                alert("Something wrong, please contact dev.")
+              } else {
+                alert("注册成功")
+                console.log("Register success");
+                $('#myModal3').modal('hide');
+              }
+            },
+            error: function () {
+              toastr.error('Error');
+            },
+            complete: function () {
+
+            }
+
+          });
+        }
+      });
+
+
     $("#btn_delete").click(
       function () {
         var arrselections = $("#tb_departments")
