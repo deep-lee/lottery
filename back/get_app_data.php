@@ -28,13 +28,13 @@ if (check_user_login_out_of_time() == false) {
     }
     $sql .= " limit $offset,$limit";
   } else {
-    $sql = "select * from lottery where url like '%".$search_text."%' or
+    $sql = "select * from lottery where (url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             marqueeContent like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
-            comment like '%".$search_text."%'";
+            comment like '%".$search_text."%')";
     if ($login_user_id != 1) {
-      $sql .= " where create_user_id='$login_user_id'";
+      $sql .= " and create_user_id='$login_user_id'";
     }
 
     $sql .= " limit $offset,$limit";
@@ -60,13 +60,13 @@ if (check_user_login_out_of_time() == false) {
     }
   } else {
     $sql_total_rows = "select count(*) as total from lottery
-            where url like '%".$search_text."%' or
+            where (url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             marqueeContent like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
-            comment like '%".$search_text."%'";
+            comment like '%".$search_text."%')";
     if ($login_user_id != 1) {
-      $sql_total_rows .= " where create_user_id=$login_user_id";
+      $sql_total_rows .= " and create_user_id=$login_user_id";
     }
   }
 
