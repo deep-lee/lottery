@@ -163,6 +163,27 @@ function set_not_show() {
   }
 }
 
+function logout() {
+  $.ajax({
+    type: "get",
+    contentType: "text/html;charset=utf-8",
+    url: "./back/logout.php",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      var rt_code = data.rt_code;
+      if (rt_code == 1) {
+        location.href = "./login.html";
+      }
+    },
+    error: function () {
+      toastr.error('Error');
+    },
+    complete: function () {
+    }
+  });
+}
+
 var responseHandler = function (data) {
   console.log(data);
   if (data.rt_code == 1) {

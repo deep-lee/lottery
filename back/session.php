@@ -23,3 +23,7 @@ function check_user_login_out_of_time() {
 function get_login_user_id() {
   return $_SESSION["login_user_id"];
 }
+
+function logout() {
+  unset($_SESSION['admin']);
+}
