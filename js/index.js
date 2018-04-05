@@ -429,48 +429,18 @@ var ButtonInit = function () {
         }
       });
       
-    $("#btn_edit_url").click(
+    $("#btn_multi_update").click(
       function () {
         var arrselections = $("#tb_departments").bootstrapTable(
           'getSelections');
-        if (arrselections.length > 1) {
-          alert("只能选择一个编辑");
-          return;
-        }
+
         if (arrselections.length <= 0) {
           alert("请选择需要编辑的条目");
           return;
         }
-        $("#txt_edit_app_id").val(arrselections[0].appid);
-        if (arrselections[0].show_url == 1) {
-          $('input[id=optradio_edit_show_yes]').prop('checked', true);
-          $('input[id=optradio_edit_show_false]').prop('checked', false);
-        } else {
-          $('input[id=optradio_edit_show_yes]').prop('checked', false);
-          $('input[id=optradio_edit_show_false]').prop('checked', true);
-        }
-        $("#txt_edit_url").val(arrselections[0].url);
-
-        if (arrselections[0].type == 'android') {
-          $('input[id=optradio_edit_ios]').prop('checked', false);
-          $('input[id=optradio_edit_android]').prop('checked', true);
-        } else {
-          $('input[id=optradio_edit_ios]').prop('checked', true);
-          $('input[id=optradio_edit_android]').prop('checked', false);
-        }
-
-        $("#txt_edit_comment").val(arrselections[0].comment);
-
-        $("#txt_edit_imagelist").val(arrselections[0].ImgList);
-        $("#txt_edit_marqueeContent").val(arrselections[0].marqueeContent);
-        $("#txt_edit_qqnumber").val(arrselections[0].qqNumber);
-
-        $("#txt_edit_reserve1").val(arrselections[0].reserve1);
-        $("#txt_edit_reserve2").val(arrselections[0].reserve2);
-        $("#txt_edit_reserve3").val(arrselections[0].reserve3);
-
-        postdata.ROLE_ID = arrselections[0].ROLE_ID;
-        $('#myModal2').modal();
+        
+        
+        $('#myModal4').modal();
       });
     $("#btn_edit").click(
       function () {
