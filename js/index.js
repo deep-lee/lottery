@@ -210,7 +210,7 @@ var TableInit = function () {
       queryParams: oTableInit.queryParams,//传递参数（*）
       sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
       pageNumber: 1,                       //初始化加载第一页，默认第一页
-      pageSize: 50,                       //每页的记录行数（*）
+      pageSize: 100,                       //每页的记录行数（*）
       pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
       // search: true,                    //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
       strictSearch: true,
@@ -240,6 +240,9 @@ var TableInit = function () {
         field: 'appid',
         title: '应用ID'
       }, {
+        field: 'comment',
+        title: 'app名称'
+      }, {
         field: 'ImgList',
         title: '轮播图地址'
       }, {
@@ -248,9 +251,6 @@ var TableInit = function () {
       }, {
         field: 'qqNumber',
         title: 'QQ客服'
-      }, {
-        field: 'comment',
-        title: '备注'
       }, {
         field: 'reserve1',
         title: '预留1'
