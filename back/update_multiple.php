@@ -47,7 +47,7 @@ if (check_user_login_out_of_time() == false) {
 
     $sql .= "where id in ($ids)";
 
-    // echo $sql;
+    echo $sql;
 
     $result = mysql_query($sql);
     
@@ -59,6 +59,8 @@ if (check_user_login_out_of_time() == false) {
 
     $sql_for_remove = "select * from lottery where id in ($ids)";
     $result_for_remove = mysql_query($sql_for_remove);
+
+    echo $sql_for_remove;
 
     if ($result_for_remove == false) {
         $returnData['rt_code'] = 0;
