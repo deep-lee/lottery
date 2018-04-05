@@ -389,7 +389,7 @@ function get_multi_update_params() {
     ids += arrselections[i].id + ',';
   }
 
-  var show = nil;
+  var show = undefined;
   if ($("input[name='multi_update_show']:checked").val() == 'Yes' || $("input[name='multi_update_show']:checked").val() == 'No') {
     show = $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0;
   }
