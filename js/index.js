@@ -510,6 +510,11 @@ var ButtonInit = function () {
         }
       });
 
+    $("#btn_register").click(
+      function () {
+        $('#myModal3').modal();
+      });
+
     $("#btn_register_submit").click(
       function () {
         if (!check_register_params_empty()) {
