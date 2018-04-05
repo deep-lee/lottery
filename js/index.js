@@ -316,6 +316,28 @@ function check_register_params_empty() {
   return flag;
 }
 
+function check_update_password_params_empty() {
+  // alert($("input[name='add_type']:checked").val());
+  var flag = true;
+  if ($("#txt_update_username").val() == '') {
+    flag = false;
+  } else if ($("#txt_update_password").val() == '') {
+    flag = false;
+  }
+
+  return flag;
+}
+
+
+function get_update_password_params() {
+  var requestData = {
+    "username": $("#txt_update_username").val(),
+    "newpass": $("#txt_update_password").val(),
+  };
+
+  return requestData;
+}
+
 function get_register_params() {
   var requestData = {
     "username": $("#txt_register_username").val(),
@@ -615,6 +637,7 @@ var ButtonInit = function () {
       function () {
         $('#myModal3').modal();
       });
+    
 
     $("#btn_register_submit").click(
       function () {
@@ -635,7 +658,7 @@ var ButtonInit = function () {
               } else if (rt_code == 0) {
                 alert("Something wrong, please contact dev.")
               } else if (rt_code == 3) {
-                alert("目前只支持主帐号注册子账号")
+                alert("注册失败！目前只支持主帐号注册子账号")
               } else {
                 alert("注册成功")
                 console.log("Register success");
@@ -652,7 +675,49 @@ var ButtonInit = function () {
           });
         }
       });
+    
+    $("#btn_update_password").click(
+      function () {
+        $('#myModal5').modal();
+      });
 
+
+    $("#btn_update_password_submit").click(
+      function () {
+        if (!check_update_password_params_empty()) {
+          alert("请填写完整");
+        } else {
+          var requestData = get_update_password_params();
+          $.ajax({
+            type: "get",
+            contentType: "text/html;charset=utf-8",
+            url: "./back/change_password.php",
+            data: requestData,
+            dataType: "json",
+            success: function (data) {
+              var rt_code = data.rt_code;
+              if (rt_code == -1) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == 0) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == 3) {
+                alert("注册失败！目前只支持主帐号注册子账号")
+              } else {
+                alert("更新密码成功")
+                console.log("update password success");
+                $('#myModal3').modal('hide');
+              }
+            },
+            error: function () {
+              toastr.error('Error');
+            },
+            complete: function () {
+
+            }
+
+          });
+        }
+      });
 
     $("#btn_delete").click(
       function () {
