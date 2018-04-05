@@ -383,114 +383,286 @@ function get_multi_update_params() {
   var arrayLength = arrselections.length;
   var ids = '';
   for (var i = 0; i < arrayLength; i++) {
-      ids += arrselections[i].id + ',';
+    ids += arrselections[i].id + ',';
 
-  var requestData = {
-    "id": ids,
-    "url": $("#txt_multi_update_url").val(),
-    "qqNumber": $("#txt_multi_update_qqnumber").val(),
-    "show": $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0,
-    "imgList": $("#txt_milti_update_imagelist").val(),
-    "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
-  };
+    var requestData = {
+      "id": ids,
+      "url": $("#txt_multi_update_url").val(),
+      "qqNumber": $("#txt_multi_update_qqnumber").val(),
+      "show": $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0,
+      "imgList": $("#txt_milti_update_imagelist").val(),
+      "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
+    };
 
-  return requestData;
-}
+    return requestData;
+  }
 
-function get_edit_params() {
-  var arrselections = $("#tb_departments").bootstrapTable(
-    'getSelections');
-  var requestData = {
-    "id": arrselections[0].id,
-    "url": $("#txt_edit_url").val(),
-    "appid": $("#txt_edit_app_id").val(),
-    "type": $("input[name='edit_type']:checked").val() == 'android' ? "android" : 'ios',
-    "show": $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0,
-    "comment": $("#txt_edit_comment").val(),
-    "qqNumber": $("#txt_edit_qqnumber").val(),
-    "imgList": $("#txt_edit_imagelist").val(),
-    "marqueeContent": $("#txt_edit_marqueeContent").val(),
-    "reserve1": $("#txt_edit_reserve1").val(),
-    "reserve2": $("#txt_edit_reserve2").val(),
-    "reserve3": $("#txt_edit_reserve3").val(),
-  };
+  function get_edit_params() {
+    var arrselections = $("#tb_departments").bootstrapTable(
+      'getSelections');
+    var requestData = {
+      "id": arrselections[0].id,
+      "url": $("#txt_edit_url").val(),
+      "appid": $("#txt_edit_app_id").val(),
+      "type": $("input[name='edit_type']:checked").val() == 'android' ? "android" : 'ios',
+      "show": $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0,
+      "comment": $("#txt_edit_comment").val(),
+      "qqNumber": $("#txt_edit_qqnumber").val(),
+      "imgList": $("#txt_edit_imagelist").val(),
+      "marqueeContent": $("#txt_edit_marqueeContent").val(),
+      "reserve1": $("#txt_edit_reserve1").val(),
+      "reserve2": $("#txt_edit_reserve2").val(),
+      "reserve3": $("#txt_edit_reserve3").val(),
+    };
 
-  return requestData;
-}
+    return requestData;
+  }
 
-var ButtonInit = function () {
-  var oInit = new Object();
-  var postdata = {};
+  var ButtonInit = function () {
+    var oInit = new Object();
+    var postdata = {};
 
-  oInit.Init = function () {
-    //初始化页面上面的按钮事件
-    $("#btn_add").click(
-      function () {
-        $('#myModal1').modal();
-      });
-    $("#btn_add_submit").click(
-      function () {
-        if (!check_add_params_empty()) {
-          alert("请填写完整");
-        } else {
-          var requestData = get_add_params();
-          $.ajax({
-            type: "get",
-            contentType: "text/html;charset=utf-8",
-            url: "./back/add.php",
-            data: requestData,
-            dataType: "json",
-            success: function (data) {
-              var rt_code = data.rt_code;
-              if (rt_code == -1) {
-                alert("Something wrong, please contact dev.")
-              } else if (rt_code == 0) {
-                alert("Something wrong, please contact dev.")
-              } else if (rt_code == 2) {
-                // 有重复的appid
-                alert("Appid 重复");
-              } else if (rt_code == -2) {
-                location.href = "./login.html";
-              } else {
-                console.log("Add success");
-                $('#myModal1').modal('hide');
+    oInit.Init = function () {
+      //初始化页面上面的按钮事件
+      $("#btn_add").click(
+        function () {
+          $('#myModal1').modal();
+        });
+      $("#btn_add_submit").click(
+        function () {
+          if (!check_add_params_empty()) {
+            alert("请填写完整");
+          } else {
+            var requestData = get_add_params();
+            $.ajax({
+              type: "get",
+              contentType: "text/html;charset=utf-8",
+              url: "./back/add.php",
+              data: requestData,
+              dataType: "json",
+              success: function (data) {
+                var rt_code = data.rt_code;
+                if (rt_code == -1) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == 0) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == 2) {
+                  // 有重复的appid
+                  alert("Appid 重复");
+                } else if (rt_code == -2) {
+                  location.href = "./login.html";
+                } else {
+                  console.log("Add success");
+                  $('#myModal1').modal('hide');
+                  $('#tb_departments').bootstrapTable('refresh');
+                }
+              },
+              error: function () {
+                toastr.error('Error');
+              },
+              complete: function () {
+
+              }
+
+            });
+          }
+        });
+
+      $("#btn_multi_update").click(
+        function () {
+          var arrselections = $("#tb_departments").bootstrapTable(
+            'getSelections');
+
+          if (arrselections.length <= 0) {
+            alert("请选择需要编辑的条目");
+            return;
+          }
+
+          $('#myModal4').modal();
+        });
+
+      $("#btn_multi_update_submit").click(
+        function () {
+          if (!check_multi_update_params_all_empty()) {
+            alert("请至少填写一个");
+          } else {
+            var requestData = get_multi_update_params();
+            $.ajax({
+              type: "get",
+              contentType: "text/html;charset=utf-8",
+              url: "./back/update_multiple.php",
+              data: requestData,
+              dataType: "json",
+              success: function (data) {
+                var rt_code = data.rt_code;
+                if (rt_code == -1) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == 0) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == -2) {
+                  location.href = "./login.html";
+                } else {
+                  alert("修改成功")
+                  console.log("Update success");
+                }
+                $('#myModal4').modal('hide');
                 $('#tb_departments').bootstrapTable('refresh');
+              },
+              error: function () {
+                toastr.error('Error');
+              },
+              complete: function () {
+
               }
-            },
-            error: function () {
-              toastr.error('Error');
-            },
-            complete: function () {
 
-            }
+            });
+          }
+        });
 
-          });
-        }
-      });
+      $("#btn_edit").click(
+        function () {
+          var arrselections = $("#tb_departments").bootstrapTable(
+            'getSelections');
+          if (arrselections.length > 1) {
+            alert("只能选择一个编辑");
+            return;
+          }
+          if (arrselections.length <= 0) {
+            alert("请选择需要编辑的条目");
+            return;
+          }
+          $("#txt_edit_app_id").val(arrselections[0].appid);
+          if (arrselections[0].show_url == 1) {
+            $('input[id=optradio_edit_show_yes]').prop('checked', true);
+            $('input[id=optradio_edit_show_false]').prop('checked', false);
+          } else {
+            $('input[id=optradio_edit_show_yes]').prop('checked', false);
+            $('input[id=optradio_edit_show_false]').prop('checked', true);
+          }
+          $("#txt_edit_url").val(arrselections[0].url);
 
-    $("#btn_multi_update").click(
-      function () {
-        var arrselections = $("#tb_departments").bootstrapTable(
-          'getSelections');
+          if (arrselections[0].type == 'android') {
+            $('input[id=optradio_edit_ios]').prop('checked', false);
+            $('input[id=optradio_edit_android]').prop('checked', true);
+          } else {
+            $('input[id=optradio_edit_ios]').prop('checked', true);
+            $('input[id=optradio_edit_android]').prop('checked', false);
+          }
 
-        if (arrselections.length <= 0) {
-          alert("请选择需要编辑的条目");
-          return;
-        }
+          $("#txt_edit_comment").val(arrselections[0].comment);
 
-        $('#myModal4').modal();
-      });
+          $("#txt_edit_imagelist").val(arrselections[0].ImgList);
+          $("#txt_edit_marqueeContent").val(arrselections[0].marqueeContent);
+          $("#txt_edit_qqnumber").val(arrselections[0].qqNumber);
 
-    $("#btn_multi_update_submit").click(
-      function () {
-        if (!check_multi_update_params_all_empty()) {
-          alert("请至少填写一个");
-        } else {
-          var requestData = get_multi_update_params();
+          $("#txt_edit_reserve1").val(arrselections[0].reserve1);
+          $("#txt_edit_reserve2").val(arrselections[0].reserve2);
+          $("#txt_edit_reserve3").val(arrselections[0].reserve3);
+
+          postdata.ROLE_ID = arrselections[0].ROLE_ID;
+          $('#myModal2').modal();
+        });
+
+      $("#btn_edit_submit").click(
+        function () {
+          if (!check_edit_params_empty()) {
+            alert("请填写完整");
+          } else {
+            var requestData = get_edit_params();
+            $.ajax({
+              type: "get",
+              contentType: "text/html;charset=utf-8",
+              url: "./back/update.php",
+              data: requestData,
+              dataType: "json",
+              success: function (data) {
+                var rt_code = data.rt_code;
+                if (rt_code == -1) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == 0) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == -2) {
+                  location.href = "./login.html";
+                } else {
+                  console.log("Update success");
+                }
+                $('#myModal2').modal('hide');
+                $('#tb_departments').bootstrapTable('refresh');
+              },
+              error: function () {
+                toastr.error('Error');
+              },
+              complete: function () {
+
+              }
+
+            });
+          }
+        });
+
+      $("#btn_register").click(
+        function () {
+          $('#myModal3').modal();
+        });
+
+      $("#btn_register_submit").click(
+        function () {
+          if (!check_register_params_empty()) {
+            alert("请填写完整");
+          } else {
+            var requestData = get_register_params();
+            $.ajax({
+              type: "get",
+              contentType: "text/html;charset=utf-8",
+              url: "./back/register.php",
+              data: requestData,
+              dataType: "json",
+              success: function (data) {
+                var rt_code = data.rt_code;
+                if (rt_code == -1) {
+                  alert("Something wrong, please contact dev.")
+                } else if (rt_code == 0) {
+                  alert("Something wrong, please contact dev.")
+                } else {
+                  alert("注册成功")
+                  console.log("Register success");
+                  $('#myModal3').modal('hide');
+                }
+              },
+              error: function () {
+                toastr.error('Error');
+              },
+              complete: function () {
+
+              }
+
+            });
+          }
+        });
+
+
+      $("#btn_delete").click(
+        function () {
+          var arrselections = $("#tb_departments")
+            .bootstrapTable('getSelections');
+          if (arrselections.length <= 0) {
+            alert("至少选择一个");
+            return;
+          }
+          var ids = "";
+          console.log(arrselections.length);
+          for (var i = 0; i < arrselections.length; i++) {
+            ids = ids + arrselections[i].id + ",";
+          }
+
+          var requestData = {
+            "ids": ids.substring(0, ids.length - 1),
+          };
+
           $.ajax({
             type: "get",
             contentType: "text/html;charset=utf-8",
-            url: "./back/update_multiple.php",
+            url: "./back/del.php",
             data: requestData,
             dataType: "json",
             success: function (data) {
@@ -502,89 +674,7 @@ var ButtonInit = function () {
               } else if (rt_code == -2) {
                 location.href = "./login.html";
               } else {
-                alert("修改成功")
-                console.log("Update success");
-              }
-              $('#myModal4').modal('hide');
-              $('#tb_departments').bootstrapTable('refresh');
-            },
-            error: function () {
-              toastr.error('Error');
-            },
-            complete: function () {
-
-            }
-
-          });
-        }
-      });
-
-    $("#btn_edit").click(
-      function () {
-        var arrselections = $("#tb_departments").bootstrapTable(
-          'getSelections');
-        if (arrselections.length > 1) {
-          alert("只能选择一个编辑");
-          return;
-        }
-        if (arrselections.length <= 0) {
-          alert("请选择需要编辑的条目");
-          return;
-        }
-        $("#txt_edit_app_id").val(arrselections[0].appid);
-        if (arrselections[0].show_url == 1) {
-          $('input[id=optradio_edit_show_yes]').prop('checked', true);
-          $('input[id=optradio_edit_show_false]').prop('checked', false);
-        } else {
-          $('input[id=optradio_edit_show_yes]').prop('checked', false);
-          $('input[id=optradio_edit_show_false]').prop('checked', true);
-        }
-        $("#txt_edit_url").val(arrselections[0].url);
-
-        if (arrselections[0].type == 'android') {
-          $('input[id=optradio_edit_ios]').prop('checked', false);
-          $('input[id=optradio_edit_android]').prop('checked', true);
-        } else {
-          $('input[id=optradio_edit_ios]').prop('checked', true);
-          $('input[id=optradio_edit_android]').prop('checked', false);
-        }
-
-        $("#txt_edit_comment").val(arrselections[0].comment);
-
-        $("#txt_edit_imagelist").val(arrselections[0].ImgList);
-        $("#txt_edit_marqueeContent").val(arrselections[0].marqueeContent);
-        $("#txt_edit_qqnumber").val(arrselections[0].qqNumber);
-
-        $("#txt_edit_reserve1").val(arrselections[0].reserve1);
-        $("#txt_edit_reserve2").val(arrselections[0].reserve2);
-        $("#txt_edit_reserve3").val(arrselections[0].reserve3);
-
-        postdata.ROLE_ID = arrselections[0].ROLE_ID;
-        $('#myModal2').modal();
-      });
-
-    $("#btn_edit_submit").click(
-      function () {
-        if (!check_edit_params_empty()) {
-          alert("请填写完整");
-        } else {
-          var requestData = get_edit_params();
-          $.ajax({
-            type: "get",
-            contentType: "text/html;charset=utf-8",
-            url: "./back/update.php",
-            data: requestData,
-            dataType: "json",
-            success: function (data) {
-              var rt_code = data.rt_code;
-              if (rt_code == -1) {
-                alert("Something wrong, please contact dev.")
-              } else if (rt_code == 0) {
-                alert("Something wrong, please contact dev.")
-              } else if (rt_code == -2) {
-                location.href = "./login.html";
-              } else {
-                console.log("Update success");
+                console.log("Delete success");
               }
               $('#myModal2').modal('hide');
               $('#tb_departments').bootstrapTable('refresh');
@@ -593,102 +683,13 @@ var ButtonInit = function () {
               toastr.error('Error');
             },
             complete: function () {
-
             }
 
           });
-        }
-      });
-
-    $("#btn_register").click(
-      function () {
-        $('#myModal3').modal();
-      });
-
-    $("#btn_register_submit").click(
-      function () {
-        if (!check_register_params_empty()) {
-          alert("请填写完整");
-        } else {
-          var requestData = get_register_params();
-          $.ajax({
-            type: "get",
-            contentType: "text/html;charset=utf-8",
-            url: "./back/register.php",
-            data: requestData,
-            dataType: "json",
-            success: function (data) {
-              var rt_code = data.rt_code;
-              if (rt_code == -1) {
-                alert("Something wrong, please contact dev.")
-              } else if (rt_code == 0) {
-                alert("Something wrong, please contact dev.")
-              } else {
-                alert("注册成功")
-                console.log("Register success");
-                $('#myModal3').modal('hide');
-              }
-            },
-            error: function () {
-              toastr.error('Error');
-            },
-            complete: function () {
-
-            }
-
-          });
-        }
-      });
-
-
-    $("#btn_delete").click(
-      function () {
-        var arrselections = $("#tb_departments")
-          .bootstrapTable('getSelections');
-        if (arrselections.length <= 0) {
-          alert("至少选择一个");
-          return;
-        }
-        var ids = "";
-        console.log(arrselections.length);
-        for (var i = 0; i < arrselections.length; i++) {
-          ids = ids + arrselections[i].id + ",";
-        }
-
-        var requestData = {
-          "ids": ids.substring(0, ids.length - 1),
-        };
-
-        $.ajax({
-          type: "get",
-          contentType: "text/html;charset=utf-8",
-          url: "./back/del.php",
-          data: requestData,
-          dataType: "json",
-          success: function (data) {
-            var rt_code = data.rt_code;
-            if (rt_code == -1) {
-              alert("Something wrong, please contact dev.")
-            } else if (rt_code == 0) {
-              alert("Something wrong, please contact dev.")
-            } else if (rt_code == -2) {
-              location.href = "./login.html";
-            } else {
-              console.log("Delete success");
-            }
-            $('#myModal2').modal('hide');
-            $('#tb_departments').bootstrapTable('refresh');
-          },
-          error: function () {
-            toastr.error('Error');
-          },
-          complete: function () {
-          }
 
         });
+    };
 
-      });
+    return oInit;
   };
-
-  return oInit;
-};
+}
