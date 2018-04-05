@@ -18,6 +18,8 @@ if (check_user_login_out_of_time() == false) {
 
   $login_user_id = get_login_user_id();
 
+  echo "login user id: ".$login_user_id;
+
   // echo $limit." ".$offset." ".$search_text." ".$start_index;
 
   $sql = "";
