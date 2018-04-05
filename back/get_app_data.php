@@ -22,17 +22,20 @@ if (check_user_login_out_of_time() == false) {
 
   $sql = "";
   if ($search_text == '') {
-    $sql = "select * from lottery limit $offset,$limit";
+    $sql = "select * from lottery";
     if ($login_user_id != 1) {
       $sql .= " where create_user_id=$login_user_id";
     }
+    $sql .= " limit $offset,$limit";
   } else {
     $sql = "select * from lottery where url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
-            comment like '%".$search_text."%' limit $offset,$limit";
+            comment like '%".$search_text."%'";
     if ($login_user_id != 1) {
       $sql .= " where create_user_id='$login_user_id'";
     }
+
+    $sql .= " limit $offset,$limit";
   }
 
   echo $sql;
@@ -57,7 +60,7 @@ if (check_user_login_out_of_time() == false) {
     $sql_total_rows = "select count(*) as total from lottery
             where url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
-            comment like '%".$search_text."%' limit $offset,$limit";
+            comment like '%".$search_text."%'";
     if ($login_user_id != 1) {
       $sql_total_rows .= " where create_user_id=$login_user_id";
     }
