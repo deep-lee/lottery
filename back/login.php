@@ -22,7 +22,6 @@ if (isset($_GET['username']) &&
       } else {
 
         $row = mysql_fetch_assoc($result);
-        echo $row['id'];
 
         session_start();
         $_SESSION["admin"] = true;
