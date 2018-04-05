@@ -419,6 +419,14 @@ var ButtonInit = function () {
 
         $("#txt_edit_comment").val(arrselections[0].comment);
 
+        $("#txt_add_imagelist").val(arrselections[0].ImgList);
+        $("#txt_add_marqueeContent").val(arrselections[0].marqueeContent);
+        $("#txt_add_qqnumber").val(arrselections[0].qqNumber);
+
+        $("#txt_add_reserve1").val(arrselections[0].reserve1);
+        $("#txt_add_reserve2").val(arrselections[0].reserve2);
+        $("#txt_add_reserve3").val(arrselections[0].reserve3);
+
         postdata.ROLE_ID = arrselections[0].ROLE_ID;
         $('#myModal2').modal();
       });
