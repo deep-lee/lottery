@@ -21,7 +21,7 @@ if (isset($_GET['username']) &&
         $returnData['rt_code'] = 2;
       } else {
 
-        $row = mysql_fetch_row($result);
+        $row = mysql_fetch_assoc($result);
         echo $row['id'];
 
         session_start();
