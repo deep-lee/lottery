@@ -40,7 +40,7 @@ if (check_user_login_out_of_time() == false) {
     $sql .= " limit $offset,$limit";
   }
 
-  echo $sql;
+  // echo $sql;
 
   $result = mysql_query($sql);
 
@@ -70,7 +70,7 @@ if (check_user_login_out_of_time() == false) {
     }
   }
 
-  echo $sql_total_rows;
+  // echo $sql_total_rows;
 
   $result_total_rows = mysql_query($sql_total_rows);
   $row_total = mysql_fetch_array($result_total_rows);
