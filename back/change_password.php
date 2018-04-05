@@ -9,8 +9,11 @@ if (check_user_login_out_of_time() == false) {
   $returnData['rt_code'] = -2;
 } else {
   if (isset($_GET['newpass'])) {
+
+    $login_user_id = get_login_user_id();
+
     $newpass = $_GET['newpass'];
-    $sql = "update admin set password = '$newpass' where username = 'admin'";
+    $sql = "update admin set password = '$newpass' where id=$login_user_id";
     $result = mysql_query($sql);
     if ($result == false) {
       $returnData['rt_code'] = 0;
