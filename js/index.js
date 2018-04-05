@@ -269,9 +269,6 @@ var TableInit = function () {
       }, {
         field: 'createAt',
         title: '创建时间'
-      }, {
-        field: 'updateAt',
-        title: '更新时间'
       },]
     });
   };
