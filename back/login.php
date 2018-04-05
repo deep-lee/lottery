@@ -20,8 +20,12 @@ if (isset($_GET['username']) &&
       if (mysql_num_rows($result) == 0) {
         $returnData['rt_code'] = 2;
       } else {
+
+        $row = mysql_fetch_row(result);
+
         session_start();
         $_SESSION["admin"] = true;
+        $_SESSION["login_user_id"] = $row['id'];
         $_SESSION['last_access'] = time();
         $returnData['rt_code'] = 1;
       }

@@ -16,15 +16,23 @@ if (check_user_login_out_of_time() == false) {
   $offset = $_GET['offset'];
   $search_text = $_GET['search_text'];
 
+  $login_user_id = get_login_user_id();
+
   // echo $limit." ".$offset." ".$search_text." ".$start_index;
 
   $sql = "";
   if ($search_text == '') {
     $sql = "select * from lottery limit $offset,$limit";
+    if ($login_user_id != 1) {
+      $sql .= " where create_user_id=$login_user_id";
+    }
   } else {
     $sql = "select * from lottery where url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             comment like '%".$search_text."%' limit $offset,$limit";
+    if ($login_user_id != 1) {
+      $sql .= " where create_user_id=$login_user_id";
+    }
   }
 
   // echo $sql;

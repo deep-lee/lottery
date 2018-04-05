@@ -19,6 +19,9 @@ if (check_user_login_out_of_time() == false) {
       isset($_GET['reserve2']) &&
       isset($_GET['reserve3']) &&
       isset($_GET['comment'])) {
+
+    $login_user_id = get_login_user_id();
+    
     $url = $_GET['url'];
     $appid = $_GET['appid'];
     $type = $_GET['type'];
@@ -48,8 +51,8 @@ if (check_user_login_out_of_time() == false) {
         // 有重复的appid
         $returnData['rt_code'] = 2;
       } else {
-        $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment, ImgList, marqueeContent, qqNumber, reserve1, reserve2, reserve3) values
-                ('$url', $show, '$type', '$appid', '$createAt', '$comment', '$imgList', '$marqueeContent', '$qqNumber', '$reserve1', '$reserve2', '$reserve3')";
+        $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment, ImgList, marqueeContent, qqNumber, reserve1, reserve2, reserve3, create_user_id) values
+                ('$url', $show, '$type', '$appid', '$createAt', '$comment', '$imgList', '$marqueeContent', '$qqNumber', '$reserve1', '$reserve2', '$reserve3', '$login_user_id')";
         $result = mysql_query($sql);
         if ($result == false) {
           $returnData['rt_code'] = 0;
