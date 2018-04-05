@@ -384,18 +384,24 @@ function get_multi_update_params() {
 
   console.log($("input[name='multi_update_show']:checked").val());
 
+
   for (var i = 0; i < arrayLength; i++) {
     ids += arrselections[i].id + ',';
-
-    var requestData = {
-      "ids": ids,
-      "url": $("#txt_multi_update_url").val(),
-      "qqNumber": $("#txt_multi_update_qqnumber").val(),
-      // "show": ($("input[name='multi_update_show']:checked").val() == 'Yes' || $("input[name='multi_update_show']:checked").val() == 'No') ,
-      "imgList": $("#txt_milti_update_imagelist").val(),
-      "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
-    };
   }
+
+  var show = undefined;
+  if ($("input[name='multi_update_show']:checked").val() == 'Yes' || $("input[name='multi_update_show']:checked").val() == 'No') {
+    show = $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0;
+  }
+
+  var requestData = {
+    "ids": ids,
+    "url": $("#txt_multi_update_url").val(),
+    "qqNumber": $("#txt_multi_update_qqnumber").val(),
+    "show": show,
+    "imgList": $("#txt_milti_update_imagelist").val(),
+    "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
+  };
 
   return requestData;
 }
