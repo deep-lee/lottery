@@ -229,20 +229,20 @@ var TableInit = function () {
           field: 'checked',
           checkbox: true,
         }, {
-          field: 'url',
-          title: '跳转链接'
-        }, {
-          field: 'type',
-          title: '应用平台'
-        }, {
-          field: 'show_url',
-          title: '是否跳转'
+          field: 'comment',
+          title: 'app名称'
         }, {
           field: 'appid',
           title: '应用ID'
         }, {
-          field: 'comment',
-          title: 'app名称'
+          field: 'url',
+          title: '跳转链接'
+        }, {
+          field: 'show_url',
+          title: '是否跳转'
+        }, {
+          field: 'type',
+          title: '应用平台'
         }, {
           field: 'ImgList',
           title: '轮播图地址'
