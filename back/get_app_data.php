@@ -25,7 +25,7 @@ if (check_user_login_out_of_time() == false) {
 
   $sql = "";
   if ($search_text == '') {
-    $sql = "select * from lottery l 
+    $sql = "select l.*, a.username from lottery l 
             left join admin a on l.create_user_id=a.id ";
     if ($login_user_id != 1) {
       $sql .= " where create_user_id=$login_user_id";
