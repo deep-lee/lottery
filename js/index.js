@@ -417,7 +417,7 @@ function get_multi_update_params() {
 
   var show = '';
   if ($("input[name='multi_update_show']:checked").val() == 'Yes' || $("input[name='multi_update_show']:checked").val() == 'No') {
-    show = $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0;
+    show = $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0;
   }
 
   var requestData = {
