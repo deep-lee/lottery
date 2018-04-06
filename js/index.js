@@ -229,9 +229,6 @@ var TableInit = function () {
           field: 'checked',
           checkbox: true,
         }, {
-          field: 'id',
-          title: 'ID',
-        }, {
           field: 'url',
           title: '跳转链接'
         }, {
