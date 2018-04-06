@@ -226,11 +226,11 @@ var TableInit = function () {
       responseHandler: responseHandler,   // 返回数据回调函数
       columns: [
         {
-          field: 'id',
-          title: 'ID',
-        }, {
           field: 'checked',
           checkbox: true,
+        }, {
+          field: 'id',
+          title: 'ID',
         }, {
           field: 'url',
           title: '跳转链接'
