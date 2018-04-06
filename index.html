@@ -34,7 +34,7 @@
                     <button type="button" style="margin-left:50px" id="btn_register" class="btn btn-primary">注册帐号(仅供主帐号使用)</button>
                 </div>
                 <div class="col-sm-4" style="text-align:left;" id="register">
-                        <button type="button" style="margin-left:50px" id="btn_update_password" class="btn btn-primary">修改子账户密码(仅供主账户使用)</button>
+                    <button type="button" style="margin-left:50px" id="btn_update_password" class="btn btn-primary">修改子账户密码(仅供主账户使用)</button>
                 </div>
             </div>
         </div>
@@ -64,8 +64,8 @@
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
             </button>
             <button id="btn_multi_update" type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>批量修改
-                </button>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>批量修改
+            </button>
             <button id="btn_delete" type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
             </button>
@@ -157,8 +157,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label for="txt_price">app名称</label>
+                            <input type="text" name="txt_comment" class="form-control" id="txt_add_comment" placeholder="app名称">
+                        </div>
+
+                        <div class="form-group">
                             <label for="txt_price">应用ID</label>
                             <input type="text" name="txt_app_id" class="form-control" id="txt_add_app_id" placeholder="App id">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_price">跳转链接</label>
+                            <input type="text" name="txt_url" class="form-control" id="txt_add_url" placeholder="URL">
                         </div>
                         <div class="form-group">
                             <label for="txt_quantity">是否跳转</label>
@@ -170,10 +179,7 @@
                                 <input type="radio" name="add_show" id="optradio_add_show_false" value="No"> No
                             </label>
                         </div>
-                        <div class="form-group">
-                            <label for="txt_price">跳转链接</label>
-                            <input type="text" name="txt_url" class="form-control" id="txt_add_url" placeholder="URL">
-                        </div>
+
                         <div class="form-group">
                             <label for="txt_price">应用平台</label>
                             <br>
@@ -196,10 +202,7 @@
                             <label for="txt_qqnumber">客服QQ</label>
                             <input type="text" name="txt_qqnumber" class="form-control" id="txt_add_qqnumber" placeholder="客服QQ">
                         </div>
-                        <div class="form-group">
-                            <label for="txt_price">app名称</label>
-                            <input type="text" name="txt_comment" class="form-control" id="txt_add_comment" placeholder="Comment">
-                        </div>
+
                         <div class="form-group">
                             <label for="txt_price">预留1</label>
                             <input type="text" name="txt_reserve1" class="form-control" id="txt_add_reserve1" placeholder="预留1">
@@ -351,27 +354,27 @@
                         </div>
 
                         <div class="form-group">
-                                <label for="txt_price">QQ客服</label>
-                                <input type="text" name="txt_multi_update_qqnumber" class="form-control" id="txt_multi_update_qqnumber" placeholder="QQ客服">
+                            <label for="txt_price">QQ客服</label>
+                            <input type="text" name="txt_multi_update_qqnumber" class="form-control" id="txt_multi_update_qqnumber" placeholder="QQ客服">
                         </div>
 
                         <div class="form-group">
-                                <label for="txt_quantity">是否跳转</label>
-                                <br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="multi_update_show" id="optradio_multi_update_show_yes" value="Yes"> Yes
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="multi_update_show" id="optradio_multi_update_show_false" value="No"> No
-                                </label>
+                            <label for="txt_quantity">是否跳转</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="multi_update_show" id="optradio_multi_update_show_yes" value="Yes"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="multi_update_show" id="optradio_multi_update_show_false" value="No"> No
+                            </label>
                         </div>
                         <div class="form-group">
-                                <label for="txt_price">轮播图</label>
-                                <input type="text" name="milti_update_imagelist" class="form-control" id="txt_milti_update_imagelist" placeholder="以;隔开">
+                            <label for="txt_price">轮播图</label>
+                            <input type="text" name="milti_update_imagelist" class="form-control" id="txt_milti_update_imagelist" placeholder="以;隔开">
                         </div>
                         <div class="form-group">
-                                <label for="txt_price">跑马灯</label>
-                                <input type="text" name="multi_update_marqueeContent" class="form-control" id="txt_multi_update_marqueeContent" placeholder="欢迎使用本软件">
+                            <label for="txt_price">跑马灯</label>
+                            <input type="text" name="multi_update_marqueeContent" class="form-control" id="txt_multi_update_marqueeContent" placeholder="欢迎使用本软件">
                         </div>
                         <div class="form-group">
                             <label for="txt_price">预留1</label>
@@ -398,36 +401,36 @@
     </form>
 
     <form class="update_password_form">
-            <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">更新账户密码</h4>
+        <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">更新账户密码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txt_price">用户名</label>
+                            <input type="text" name="txt_update_username" class="form-control" id="txt_update_username" placeholder="用户名">
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="txt_price">用户名</label>
-                                <input type="text" name="txt_update_username" class="form-control" id="txt_update_username" placeholder="用户名">
-                            </div>
-    
-                            <div class="form-group">
-                                <label for="txt_price">密码</label>
-                                <input type="text" name="txt_update_password" class="form-control" id="txt_update_password" placeholder="密码">
-                            </div>
+
+                        <div class="form-group">
+                            <label for="txt_price">密码</label>
+                            <input type="text" name="txt_update_password" class="form-control" id="txt_update_password" placeholder="密码">
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
-                                <button type="button" id="btn_update_password_submit" class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
+                            <button type="button" id="btn_update_password_submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
+    </form>
 
 </body>
 
