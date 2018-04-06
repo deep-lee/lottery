@@ -224,55 +224,59 @@ var TableInit = function () {
       cardView: false,                    //是否显示详细视图
       detailView: false,                  //是否显示父子表
       responseHandler: responseHandler,   // 返回数据回调函数
-      columns: [{
-        field: 'checked',
-        checkbox: true,
-      }, {
-        field: 'url',
-        title: '跳转链接'
-      }, {
-        field: 'type',
-        title: '应用平台'
-      }, {
-        field: 'show_url',
-        title: '是否跳转'
-      }, {
-        field: 'appid',
-        title: '应用ID'
-      }, {
-        field: 'comment',
-        title: 'app名称'
-      }, {
-        field: 'ImgList',
-        title: '轮播图地址'
-      }, {
-        field: 'marqueeContent',
-        title: '跑马灯'
-      }, {
-        field: 'qqNumber',
-        title: 'QQ客服'
-      }, {
-        field: 'reserve1',
-        title: '预留1'
-      }, {
-        field: 'reserve2',
-        title: '预留2'
-      }, {
-        field: 'reserve3',
-        title: '预留3'
-      }, {
-        field: 'username',
-        title: '创建账户'
-      }, {
-        field: 'request_num',
-        title: '请求次数'
-      }, {
-        field: 'createAt',
-        title: '创建时间'
-      },]
+      columns: [
+        {
+          field: 'id',
+          title: 'ID',
+        }, {
+          field: 'checked',
+          checkbox: true,
+        }, {
+          field: 'url',
+          title: '跳转链接'
+        }, {
+          field: 'type',
+          title: '应用平台'
+        }, {
+          field: 'show_url',
+          title: '是否跳转'
+        }, {
+          field: 'appid',
+          title: '应用ID'
+        }, {
+          field: 'comment',
+          title: 'app名称'
+        }, {
+          field: 'ImgList',
+          title: '轮播图地址'
+        }, {
+          field: 'marqueeContent',
+          title: '跑马灯'
+        }, {
+          field: 'qqNumber',
+          title: 'QQ客服'
+        }, {
+          field: 'reserve1',
+          title: '预留1'
+        }, {
+          field: 'reserve2',
+          title: '预留2'
+        }, {
+          field: 'reserve3',
+          title: '预留3'
+        }, {
+          field: 'username',
+          title: '创建账户'
+        }, {
+          field: 'request_num',
+          title: '请求次数'
+        }, {
+          field: 'createAt',
+          title: '创建时间'
+        },]
     });
   };
-  
+
   //得到查询的参数
   oTableInit.queryParams = function (params) {
     var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
@@ -643,7 +647,7 @@ var ButtonInit = function () {
       function () {
         $('#myModal3').modal();
       });
-    
+
 
     $("#btn_register_submit").click(
       function () {
@@ -683,7 +687,7 @@ var ButtonInit = function () {
           });
         }
       });
-    
+
     $("#btn_update_password").click(
       function () {
         $('#myModal5').modal();
