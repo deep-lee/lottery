@@ -389,6 +389,12 @@ function check_multi_update_params_all_empty() {
     flag = true;
   } else if ($("#txt_multi_update_marqueeContent").val() != '') {
     flag = true;
+  } else if ($("#txt_multi_update_reserve1").val() != '') {
+    flag = true;
+  } else if ($("#txt_multi_update_reserve2").val() != '') {
+    flag = true;
+  } else if ($("#txt_multi_update_reserve3").val() != '') {
+    flag = true;
   }
 
   return flag;
@@ -420,6 +426,9 @@ function get_multi_update_params() {
     "show": show,
     "imgList": $("#txt_milti_update_imagelist").val(),
     "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
+    "reserve1": $("#txt_multi_update_reserve1").val(),
+    "reserve2": $("#txt_multi_update_reserve2").val(),
+    "reserve3": $("#txt_multi_update_reserve3").val(),
   };
 
   console.log(requestData);
