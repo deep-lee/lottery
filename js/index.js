@@ -363,9 +363,6 @@ function check_edit_params_empty() {
   } else if ($("input[name='edit_show']:checked").val() == null) {
     console.log("222");
     flag = false;
-  } else if ($("#txt_edit_url").val() == '') {
-    console.log("333");
-    flag = false;
   } else if ($("input[name='edit_type']:checked").val() == null) {
     console.log("444");
     flag = false;
