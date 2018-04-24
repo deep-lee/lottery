@@ -573,6 +573,15 @@ var ButtonInit = function () {
         }
         $("#txt_edit_url").val(arrselections[0].url);
 
+        if (arrselections[0].is_update == 1) {
+          $('input[id=optradio_edit_update_yes]').prop('checked', true);
+          $('input[id=optradio_edit_update_false]').prop('checked', false);
+        } else {
+          $('input[id=optradio_edit_update_yes]').prop('checked', false);
+          $('input[id=optradio_edit_update_false]').prop('checked', true);
+        }
+        $("#txt_edit_update_url").val(arrselections[0].url);
+
         if (arrselections[0].type == 'android') {
           $('input[id=optradio_edit_ios]').prop('checked', false);
           $('input[id=optradio_edit_android]').prop('checked', true);
@@ -582,14 +591,9 @@ var ButtonInit = function () {
         }
 
         $("#txt_edit_comment").val(arrselections[0].comment);
+        $("#txt_edit_app_name").val(arrselections[0].app_name);
 
-        $("#txt_edit_imagelist").val(arrselections[0].ImgList);
-        $("#txt_edit_marqueeContent").val(arrselections[0].marqueeContent);
         $("#txt_edit_qqnumber").val(arrselections[0].qqNumber);
-
-        $("#txt_edit_reserve1").val(arrselections[0].reserve1);
-        $("#txt_edit_reserve2").val(arrselections[0].reserve2);
-        $("#txt_edit_reserve3").val(arrselections[0].reserve3);
 
         postdata.ROLE_ID = arrselections[0].ROLE_ID;
         $('#myModal2').modal();
