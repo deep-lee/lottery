@@ -358,16 +358,12 @@ function get_add_params() {
 function check_edit_params_empty() {
   var flag = true;
   if ($("#txt_edit_app_id").val() == '') {
-    console.log("111");
     flag = false;
   } else if ($("input[name='edit_show']:checked").val() == null) {
-    console.log("222");
     flag = false;
   } else if ($("input[name='edit_type']:checked").val() == null) {
-    console.log("444");
     flag = false;
   } else if ($("input[name='edit_update']:checked").val() == null) {
-    console.log("555");
     flag = false;
   }
 
@@ -382,15 +378,9 @@ function check_multi_update_params_all_empty() {
     flag = true;
   } else if ($("#txt_multi_update_qqnumber").val() != '') {
     flag = true;
-  } else if ($("#txt_milti_update_imagelist").val() != '') {
+  } else if ($("input[name='edit_multi_update_update']:checked").val() != null) {
     flag = true;
-  } else if ($("#txt_multi_update_marqueeContent").val() != '') {
-    flag = true;
-  } else if ($("#txt_multi_update_reserve1").val() != '') {
-    flag = true;
-  } else if ($("#txt_multi_update_reserve2").val() != '') {
-    flag = true;
-  } else if ($("#txt_multi_update_reserve3").val() != '') {
+  } else if ($("#txt_multi_update_update_url").val() != '') {
     flag = true;
   }
 
@@ -416,16 +406,18 @@ function get_multi_update_params() {
     show = $("input[name='multi_update_show']:checked").val() == 'Yes' ? 1 : 0;
   }
 
+  var is_update = '';
+  if ($("input[name='edit_multi_update_update']:checked").val() == 'Yes' || $("input[name='edit_multi_update_update']:checked").val() == 'No') {
+    is_update = $("input[name='edit_multi_update_update']:checked").val() == 'Yes' ? 1 : 0;
+  }
+
   var requestData = {
     "ids": ids,
     "url": $("#txt_multi_update_url").val(),
     "qqNumber": $("#txt_multi_update_qqnumber").val(),
     "show": show,
-    "imgList": $("#txt_milti_update_imagelist").val(),
-    "marqueeContent": $("#txt_multi_update_marqueeContent").val(),
-    "reserve1": $("#txt_multi_update_reserve1").val(),
-    "reserve2": $("#txt_multi_update_reserve2").val(),
-    "reserve3": $("#txt_multi_update_reserve3").val(),
+    "isUpdate": is_update,
+    "updateUrl": $("#txt_multi_update_update_url").val(),
   };
 
   console.log(requestData);
