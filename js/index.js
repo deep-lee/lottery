@@ -250,23 +250,8 @@ var TableInit = function () {
           field: 'type',
           title: '应用平台'
         }, {
-          field: 'ImgList',
-          title: '轮播图地址'
-        }, {
-          field: 'marqueeContent',
-          title: '跑马灯'
-        }, {
           field: 'qqNumber',
           title: 'QQ客服'
-        }, {
-          field: 'reserve1',
-          title: '预留1'
-        }, {
-          field: 'reserve2',
-          title: '预留2'
-        }, {
-          field: 'reserve3',
-          title: '预留3'
         }, {
           field: 'username',
           title: '创建账户'
@@ -365,11 +350,6 @@ function get_add_params() {
     "updateUrl": $("#txt_add_update_url").val(),
     "comment": $("#txt_add_comment").val(),
     "qqNumber": $("#txt_add_qqnumber").val(),
-    "imgList": $("#txt_add_imagelist").val(),
-    "marqueeContent": $("#txt_add_marqueeContent").val(),
-    "reserve1": $("#txt_add_reserve1").val(),
-    "reserve2": $("#txt_add_reserve2").val(),
-    "reserve3": $("#txt_add_reserve3").val(),
   };
 
   return requestData;
