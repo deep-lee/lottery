@@ -358,14 +358,19 @@ function get_add_params() {
 function check_edit_params_empty() {
   var flag = true;
   if ($("#txt_edit_app_id").val() == '') {
+    console.log("111");
     flag = false;
   } else if ($("input[name='edit_show']:checked").val() == null) {
+    console.log("222");
     flag = false;
   } else if ($("#txt_edit_url").val() == '') {
+    console.log("333");
     flag = false;
   } else if ($("input[name='edit_type']:checked").val() == null) {
+    console.log("444");
     flag = false;
   } else if ($("input[name='edit_update']:checked").val() == null) {
+    console.log("555");
     flag = false;
   }
 
