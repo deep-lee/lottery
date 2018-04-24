@@ -42,6 +42,8 @@ if (check_user_login_out_of_time() == false) {
             isUpdate=$isUpdate, updateUrl='$updateUrl'
             where id=$id";
 
+    echo $sql;
+
     $result = mysql_query($sql);
     // remove from memcache
     $key=md5($appid);
