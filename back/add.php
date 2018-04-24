@@ -50,7 +50,7 @@ if (check_user_login_out_of_time() == false) {
       } else {
         $sql = "insert into lottery(url,show_url,type,appid,updateAt,comment, qqNumber, create_user_id, app_name, update_url, is_update) values
                 ('$url', $show, '$type', '$appid', '$createAt', '$comment', '$qqNumber', '$login_user_id', '$appName', '$updateUrl', $isUpdate)";
-        // echo $sql;
+        echo $sql;
         $result = mysql_query($sql);
         if ($result == false) {
           $returnData['rt_code'] = 0;
