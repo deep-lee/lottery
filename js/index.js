@@ -229,7 +229,7 @@ var TableInit = function () {
           field: 'checked',
           checkbox: true,
         }, {
-          field: 'comment',
+          field: 'app_name',
           title: 'app名称'
         }, {
           field: 'appid',
@@ -240,6 +240,12 @@ var TableInit = function () {
         }, {
           field: 'show_url',
           title: '是否跳转'
+        }, {
+          field: 'update_url',
+          title: '强更地址'
+        }, {
+          field: 'is_update',
+          title: '是否强更'
         }, {
           field: 'type',
           title: '应用平台'
@@ -264,6 +270,9 @@ var TableInit = function () {
         }, {
           field: 'username',
           title: '创建账户'
+        }, {
+          field: 'comment',
+          title: '备注'
         }, {
           field: 'request_num',
           title: '请求次数'
