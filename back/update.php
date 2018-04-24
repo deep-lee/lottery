@@ -10,15 +10,13 @@ if (check_user_login_out_of_time() == false) {
 } else {
   if (isset($_GET['id']) &&
       isset($_GET['url']) &&
+      isset($_GET['appName']) &&
       isset($_GET['appid']) &&
       isset($_GET['type']) &&
       isset($_GET['show']) &&
       isset($_GET['qqNumber']) &&
-      isset($_GET['imgList']) &&
-      isset($_GET['marqueeContent']) &&
-      isset($_GET['reserve1']) &&
-      isset($_GET['reserve2']) &&
-      isset($_GET['reserve3']) &&
+      isset($_GET['isUpdate']) &&
+      isset($_GET['updateUrl']) &&
       isset($_GET['comment'])) {
     $id = $_GET['id'];
     $url = $_GET['url'];
@@ -28,21 +26,20 @@ if (check_user_login_out_of_time() == false) {
     $comment = $_GET['comment'];
 
     $qqNumber = $_GET['qqNumber'];
-    $imgList = $_GET['imgList'];
-    $marqueeContent = $_GET['marqueeContent'];
+    
 
-    $reserve1 = $_GET['reserve1'];
-    $reserve2 = $_GET['reserve2'];
-    $reserve3 = $_GET['reserve3'];
+    $appName = $_GET['appName'];
+    $isUpdate = $_GET['isUpdate'];
+    $updateUrl = $_GET['updateUrl'];
 
     date_default_timezone_set('Asia/Shanghai');
     $updateAt = date('Y-m-d H:i:s');
 
     // echo $id." ".$url." ".$appid." ".$type." ".$show." ".comment." ".$updateAt;
 
-    $sql = "update lottery set url = '$url', appid='$appid', type='$type',
-            show_url=$show, comment='$comment', updateAt='$updateAt', ImgList='$imgList', marqueeContent='$marqueeContent', qqNumber='$qqNumber',
-            reserve1='$reserve1', reserve2='$reserve2', reserve3='$reserve3'
+    $sql = "update lottery set url = '$url', appid='$appid', type='$type', app_name='$appName',
+            show_url=$show, comment='$comment', updateAt='$updateAt', qqNumber='$qqNumber',
+            isUpdate=$isUpdate, updateUrl='$updateUrl'
             where id=$id";
 
     $result = mysql_query($sql);

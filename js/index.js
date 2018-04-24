@@ -365,6 +365,8 @@ function check_edit_params_empty() {
     flag = false;
   } else if ($("input[name='edit_type']:checked").val() == null) {
     flag = false;
+  } else if ($("input[name='edit_update']:checked").val() == null) {
+    flag = false;
   }
 
   return flag;
@@ -436,15 +438,13 @@ function get_edit_params() {
     "id": arrselections[0].id,
     "url": $("#txt_edit_url").val(),
     "appid": $("#txt_edit_app_id").val(),
+    "appName": $("#txt_edit_app_name").val(),
     "type": $("input[name='edit_type']:checked").val() == 'android' ? "android" : 'ios',
     "show": $("input[name='edit_show']:checked").val() == 'Yes' ? 1 : 0,
+    "isUpdate": $("input[name='edit_update']:checked").val() == 'Yes' ? 1 : 0,
+    "updateUrl": $("#txt_edit_update_url").val(),
     "comment": $("#txt_edit_comment").val(),
     "qqNumber": $("#txt_edit_qqnumber").val(),
-    "imgList": $("#txt_edit_imagelist").val(),
-    "marqueeContent": $("#txt_edit_marqueeContent").val(),
-    "reserve1": $("#txt_edit_reserve1").val(),
-    "reserve2": $("#txt_edit_reserve2").val(),
-    "reserve3": $("#txt_edit_reserve3").val(),
   };
 
   return requestData;
