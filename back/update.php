@@ -39,10 +39,10 @@ if (check_user_login_out_of_time() == false) {
 
     $sql = "update lottery set url = '$url', appid='$appid', type='$type', app_name='$appName',
             show_url=$show, comment='$comment', updateAt='$updateAt', qqNumber='$qqNumber',
-            isUpdate=$isUpdate, updateUrl='$updateUrl'
+            is_update=$isUpdate, update_url='$updateUrl'
             where id=$id";
 
-    echo $sql;
+    // echo $sql;
 
     $result = mysql_query($sql);
     // remove from memcache
