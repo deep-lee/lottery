@@ -302,9 +302,9 @@ function check_add_params_empty() {
     flag = false;
   } else if ($("input[name='add_show']:checked").val() == null) {
     flag = false;
-  } else if ($("#txt_add_url").val() == '') {
-    flag = false;
   } else if ($("input[name='add_type']:checked").val() == null) {
+    flag = false;
+  } else if ($("input[name='add_update']:checked").val() == null) {
     flag = false;
   }
 
@@ -358,8 +358,11 @@ function get_add_params() {
   var requestData = {
     "url": $("#txt_add_url").val(),
     "appid": $("#txt_add_app_id").val(),
+    "appName": $("#txt_add_app_name").val(),
     "type": $("input[name='add_type']:checked").val() == 'android' ? "android" : 'ios',
     "show": $("input[name='add_show']:checked").val() == 'Yes' ? 1 : 0,
+    "isUpdate": $("input[name='add_update']:checked").val() == 'Yes' ? 1 : 0,
+    "updateUrl": $("#txt_add_update_url").val(),
     "comment": $("#txt_add_comment").val(),
     "qqNumber": $("#txt_add_qqnumber").val(),
     "imgList": $("#txt_add_imagelist").val(),
