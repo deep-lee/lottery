@@ -27,31 +27,24 @@ if (isset($_GET["appid"])) {
         $data_result['code'] = 200;
         $data_result['msg'] = '';
       }
+
+      // update request number
+
+      $sql_request_num = "select request_num from lottery WHERE appid='$appid'";
+
+      $result_request_num = mysql_query($sql);
+      if ($result_request_num != false) {
+        while( $row = mysql_fetch_assoc($result_request_num) ){
+          $request_num_result = $row;
+        }
+        $request_num = $request_num_result['request_num'];
+        $request_num = $request_num + 1;
+
+        $sql_update_request_num = "UPDATE lottery SET request_num=$request_num WHERE appid='$appid'";
+        $result_update_request_num = mysql_query($sql_update_request_num);
+      }
     }
   }
-
-
-
-  // update request number
-
-  // $sql_request_num = "select request_num from lottery WHERE appid=:appid";
-  // $stmt_request_num = $dbConnection->prepare($sql_request_num);
-  // $stmt_request_num->execute(array(':appid' => $appid));
-  // $request_num_result = array();
-  // foreach ($stmt_request_num as $row) {
-  //   $request_num_result = $row;
-  // }
-
-  // $request_num = $request_num_result['request_num'];
-
-  // $request_num = $request_num + 1;
-
-  // $sql = "UPDATE lottery SET request_num=:request_num WHERE appid=:appid";
-  // // Prepare statement
-  // $stmt2 = $dbConnection->prepare($sql);
-  // $stmt2->execute(array(':appid' => $appid, ':request_num' => $request_num));
-  // // execute the query
-  // $stmt2->execute();
 
   echo json_encode($data_result);
 
