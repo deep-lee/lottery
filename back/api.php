@@ -48,6 +48,7 @@ if (isset($_GET["appid"])) {
   $sql_request_num = "select request_num from lottery WHERE appid=:appid";
   $stmt_request_num = $dbConnection->prepare($sql_request_num);
   $stmt_request_num->execute(array(':appid' => $appid));
+  $request_num_result = array();
   foreach ($stmt_request_num as $row) {
     $request_num_result = $row;
   }
