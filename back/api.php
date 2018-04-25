@@ -5,8 +5,6 @@ ini_set('display_errors', '1');
 include 'conn_memcached.php';
 include 'My.php';
 
-$db_host = 'localhost';
-$db_name = 'mydb';
 $db_user = 'root';
 $db_pwd = 'idc@bt1113';
 
@@ -15,7 +13,7 @@ if (isset($_GET["appid"])) {
   // $mysqli = new mysqli($db_host, $db_user, $db_pwd, $db_name);
   $appid = $_GET["appid"];
 
-  echo $appid;
+  // echo $appid;
 
   //缓存服务器中，都是键值对，这里我们设定唯一的键
   $key = md5($appid);
@@ -24,7 +22,7 @@ if (isset($_GET["appid"])) {
   //根据键，从缓存服务器中获取它的值
   $cache_result = $mem->get($key);
   //如果存在该键对应的值，说明缓存中存在该内容
-  $dbConnection = new PDO('mysql:dbname=mydb;host=127.0.0.1;charset=utf8', $db_user, $db_pwd);
+  $dbConnection = new PDO('mysql:dbname=mydb2;host=127.0.0.1;charset=utf8', $db_user, $db_pwd);
 
   $dbConnection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
   $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
