@@ -1,5 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 include 'conn_memcached.php';
 include 'My.php';
@@ -69,4 +70,5 @@ if (isset($_GET["appid"])) {
   $data_result = array();
   $data_result['code'] = 201;
   $data_result['msg'] = 'error';
+  json_encode($data_result);
 }
