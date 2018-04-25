@@ -29,10 +29,10 @@ if (isset($_GET["appid"])) {
   $data_result = array();
   if($cache_result){
     // 已经缓存了
-    // echo "get from memcached";
+    echo "get from memcached";
     $data_result=$cache_result;
   } else {
-    // echo "get from mysql";
+    echo "get from mysql";
     $stmt = $dbConnection->prepare('SELECT show_url as is_wap, url as wap_url, is_update, update_url FROM lottery WHERE appid = :appid');
     $stmt->execute(array(':appid' => $appid));
     foreach ($stmt as $row) {
