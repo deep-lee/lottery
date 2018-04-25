@@ -9,7 +9,7 @@ if (isset($_GET["appid"])) {
 
   $sql = "select show_url as is_wap, url as wap_url, is_update, update_url from lottery where appid='$appid'";
 
-  echo $sql;
+  // echo $sql;
 
   $result = mysql_query($sql);
 
@@ -53,11 +53,11 @@ if (isset($_GET["appid"])) {
   // // execute the query
   // $stmt2->execute();
 
-  json_encode($data_result);
+  echo json_encode($data_result);
 
 } else {
   $data_result = array();
   $data_result['code'] = 201;
   $data_result['msg'] = 'error';
-  json_encode($data_result);
+  echo json_encode($data_result);
 }
