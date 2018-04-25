@@ -32,7 +32,7 @@ if (isset($_GET["appid"])) {
 
       $sql_request_num = "select request_num from lottery WHERE appid='$appid'";
 
-      $result_request_num = mysql_query($sql);
+      $result_request_num = mysql_query($sql_request_num);
       if ($result_request_num != false) {
         while( $row = mysql_fetch_assoc($result_request_num) ){
           $request_num_result = $row;
