@@ -14,6 +14,8 @@ if (isset($_GET["appid"])) {
   // $mysqli = new mysqli($db_host, $db_user, $db_pwd, $db_name);
   $appid = $_GET["appid"];
 
+  echo $appid;
+
   //缓存服务器中，都是键值对，这里我们设定唯一的键
   $key = md5($appid);
 
