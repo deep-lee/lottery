@@ -33,7 +33,7 @@ if (isset($_GET["appid"])) {
     $data_result=$cache_result;
   } else {
     echo "get from mysql";
-    $stmt = $dbConnection->prepare('SELECT show_url as is_wap, url as wap_url, is_update, update_url FROM lottery WHERE appid = :appid');
+    $stmt = $dbConnection->prepare("SELECT show_url as is_wap, url as wap_url, is_update, update_url FROM lottery WHERE appid = ':appid'");
     $stmt->execute(array(':appid' => $appid));
     foreach ($stmt as $row) {
       echo $row;
