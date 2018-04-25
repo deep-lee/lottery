@@ -35,8 +35,6 @@ if (check_user_login_out_of_time() == false) {
     $sql = "select l.*, a.username from lottery l 
             left join admin a on l.create_user_id=a.id 
             where (url like '%".$search_text."%' or
-            appid like '%".$search_text."%' or
-            marqueeContent like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
             comment like '%".$search_text."%' ";
     if ($login_user_id != 1) {
@@ -49,7 +47,7 @@ if (check_user_login_out_of_time() == false) {
     $sql .= " limit $offset,$limit";
   }
 
- echo $sql;
+ // echo $sql;
 
   $result = mysql_query($sql);
 
@@ -71,11 +69,13 @@ if (check_user_login_out_of_time() == false) {
     $sql_total_rows = "select count(*) as total from lottery
             where (url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
-            marqueeContent like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
-            comment like '%".$search_text."%')";
+            comment like '%".$search_text."%'";
     if ($login_user_id != 1) {
+      $sql .= ")";
       $sql_total_rows .= " and create_user_id=$login_user_id";
+    } else {
+      $sql .= "a.username like '%".$search_text."%')";
     }
   }
 
