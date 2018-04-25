@@ -18,6 +18,9 @@ if (isset($_GET['username']) &&
       $returnData['rt_code'] = 0;
     } else {
       if (mysql_num_rows($result) == 0) {
+        // 密码错误
+        // error_count + 1
+
         $returnData['rt_code'] = 2;
       } else {
 

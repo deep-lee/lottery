@@ -7,13 +7,12 @@ include 'My.php';
 $db_host = 'localhost';
 $db_name = 'mydb';
 $db_user = 'root';
-$db_pwd = 'Uhdjs89d';
+$db_pwd = 'idc@bt1113';
 
-if (isset($_GET["appid"]) && isset($_GET["type"])) {
+if (isset($_GET["appid"])) {
   //面向对象方式
   // $mysqli = new mysqli($db_host, $db_user, $db_pwd, $db_name);
   $appid = $_GET["appid"];
-  $type = $_GET["type"];
 
   //缓存服务器中，都是键值对，这里我们设定唯一的键
   $key = md5($appid);
@@ -32,10 +31,12 @@ if (isset($_GET["appid"]) && isset($_GET["type"])) {
     $data_result=$cache_result;
   } else {
     // echo "get from mysql";
-    $stmt = $dbConnection->prepare('SELECT * FROM lottery WHERE appid = :appid and type = :type');
-    $stmt->execute(array(':appid' => $appid, ':type' => $type));
+    $stmt = $dbConnection->prepare('SELECT show_url as is_wap, url as wap_url, is_update, update_url FROM lottery WHERE appid = :appid');
+    $stmt->execute(array(':appid' => $appid));
     foreach ($stmt as $row) {
       $data_result = $row;
+      $data_result['code'] = 200;
+      $data_result['msg'] = '';
     }
     $mem->set($key, $data_result, MEMCACHE_COMPRESSED, 3600);
   }
@@ -60,8 +61,10 @@ if (isset($_GET["appid"]) && isset($_GET["type"])) {
   // execute the query
   $stmt2->execute();
 
-  MySuccess3($data_result, 200);
+  json_encode($data_result);
 
 } else {
-  MyError(100, 201);
+  $data_result = array();
+  $data_result['code'] = 201;
+  $data_result['msg'] = 'error';
 }
