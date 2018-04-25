@@ -22,7 +22,7 @@ if (isset($_GET["appid"])) {
       $data_result['code'] = 201;
       $data_result['msg'] = 'no data found';
     } else {
-      while( $row = mysql_fetch_array($result) ){
+      while( $row = mysql_fetch_assoc($result) ){
         $data_result = $row;
         $data_result['code'] = 200;
         $data_result['msg'] = '';
