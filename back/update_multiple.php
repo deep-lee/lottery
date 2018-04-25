@@ -2,7 +2,6 @@
 
 include 'conn.php';
 include 'session.php';
-include 'conn_memcached.php';
 
 $returnData = array();
 if (check_user_login_out_of_time() == false) {
@@ -58,20 +57,6 @@ if (check_user_login_out_of_time() == false) {
       $returnData['rt_code'] = 0;
     } else {
       $returnData['rt_code'] = 1;
-    }
-
-    $sql_for_remove = "select * from lottery where id in ($ids)";
-    $result_for_remove = mysql_query($sql_for_remove);
-
-    // echo $sql_for_remove;
-
-    if ($result_for_remove == false) {
-        $returnData['rt_code'] = 0;
-    } else {
-        while ($row = mysql_fetch_assoc($result_for_remove)) {
-            $key=md5($row['appid']);
-            $mem->delete($key);
-        }
     }
 
   } else {

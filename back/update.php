@@ -2,7 +2,6 @@
 
 include 'conn.php';
 include 'session.php';
-include 'conn_memcached.php';
 
 $returnData = array();
 if (check_user_login_out_of_time() == false) {
@@ -45,9 +44,7 @@ if (check_user_login_out_of_time() == false) {
     // echo $sql;
 
     $result = mysql_query($sql);
-    // remove from memcache
-    $key=md5($appid);
-    $mem->delete($key);
+
     if ($result == false) {
       $returnData['rt_code'] = 0;
     } else {
