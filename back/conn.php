@@ -1,6 +1,6 @@
 <?php
 
-	$con = mysql_connect("116.31.99.213", "root", "Sc/NGr)Lqh");
+	$con = mysql_connect("localhost", "www_bai0837_com", "app_manager");
 	//设置字符集为utf8
 	mysql_query("SET NAMES 'utf8'");
 
@@ -8,5 +8,5 @@
 		die(mysql_error());
 	}
 
-	mysql_select_db("mydb", $con);
+	mysql_select_db("www_bai0837_com", $con);
 ?>
