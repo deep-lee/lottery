@@ -45,24 +45,24 @@ if (isset($_GET["appid"])) {
 
   // update request number
 
-  $sql_request_num = "select request_num from lottery WHERE appid=:appid";
-  $stmt_request_num = $dbConnection->prepare($sql_request_num);
-  $stmt_request_num->execute(array(':appid' => $appid));
-  $request_num_result = array();
-  foreach ($stmt_request_num as $row) {
-    $request_num_result = $row;
-  }
+  // $sql_request_num = "select request_num from lottery WHERE appid=:appid";
+  // $stmt_request_num = $dbConnection->prepare($sql_request_num);
+  // $stmt_request_num->execute(array(':appid' => $appid));
+  // $request_num_result = array();
+  // foreach ($stmt_request_num as $row) {
+  //   $request_num_result = $row;
+  // }
 
-  $request_num = $request_num_result['request_num'];
+  // $request_num = $request_num_result['request_num'];
 
-  $request_num = $request_num + 1;
+  // $request_num = $request_num + 1;
 
-  $sql = "UPDATE lottery SET request_num=:request_num WHERE appid=:appid";
-  // Prepare statement
-  $stmt2 = $dbConnection->prepare($sql);
-  $stmt2->execute(array(':appid' => $appid, ':request_num' => $request_num));
-  // execute the query
-  $stmt2->execute();
+  // $sql = "UPDATE lottery SET request_num=:request_num WHERE appid=:appid";
+  // // Prepare statement
+  // $stmt2 = $dbConnection->prepare($sql);
+  // $stmt2->execute(array(':appid' => $appid, ':request_num' => $request_num));
+  // // execute the query
+  // $stmt2->execute();
 
   json_encode($data_result);
 
