@@ -41,7 +41,7 @@ if (check_user_login_out_of_time() == false) {
       $sql .= ")";
       $sql .= " and create_user_id='$login_user_id'";
     } else {
-      $sql .= "a.username like '%".$search_text."%')";
+      $sql .= " or a.username like '%".$search_text."%')";
     }
 
     $sql .= " limit $offset,$limit";
@@ -75,7 +75,7 @@ if (check_user_login_out_of_time() == false) {
       $sql .= ")";
       $sql_total_rows .= " and create_user_id=$login_user_id";
     } else {
-      $sql .= "a.username like '%".$search_text."%')";
+      $sql .= " or a.username like '%".$search_text."%')";
     }
   }
 
