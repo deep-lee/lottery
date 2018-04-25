@@ -40,10 +40,10 @@ if (check_user_login_out_of_time() == false) {
             qqNumber like '%".$search_text."%' or
             comment like '%".$search_text."%' ";
     if ($login_user_id != 1) {
-      $sql .= "a.username like '%".$search_text."%')";
+      $sql .= ")";
       $sql .= " and create_user_id='$login_user_id'";
     } else {
-      $sql .= ")";
+      $sql .= "a.username like '%".$search_text."%')";
     }
 
     $sql .= " limit $offset,$limit";
