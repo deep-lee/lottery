@@ -38,9 +38,12 @@ if (check_user_login_out_of_time() == false) {
             appid like '%".$search_text."%' or
             marqueeContent like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
-            comment like '%".$search_text."%')";
+            comment like '%".$search_text."%' ";
     if ($login_user_id != 1) {
+      $sql .= "a.username like '%".$search_text."%')";
       $sql .= " and create_user_id='$login_user_id'";
+    } else {
+      $sql .= ")";
     }
 
     $sql .= " limit $offset,$limit";

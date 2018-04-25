@@ -535,7 +535,7 @@ var ButtonInit = function () {
               $('#tb_departments').bootstrapTable('refresh');
             },
             error: function () {
-              toastr.error('Error');
+              console.log('Error');
             },
             complete: function () {
 
