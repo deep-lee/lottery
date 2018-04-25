@@ -9,6 +9,8 @@ if (isset($_GET["appid"])) {
 
   $sql = "select show_url as is_wap, url as wap_url, is_update, update_url from lottery where appid='$appid'";
 
+  echo $sql;
+
   $result = mysql_query($sql);
 
   while( $row = mysql_fetch_array($result) ){
