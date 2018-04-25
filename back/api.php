@@ -13,9 +13,24 @@ if (isset($_GET["appid"])) {
 
   $result = mysql_query($sql);
 
-  while( $row = mysql_fetch_array($result) ){
-    $data_result = $row;
+  if ($result == false) {
+    $data_result['code'] = 201;
+    $data_result['msg'] = 'mysql error';
+  } else {
+    if (mysql_num_rows($result) == 0) {
+      // no data found
+      $data_result['code'] = 201;
+      $data_result['msg'] = 'no data found';
+    } else {
+      while( $row = mysql_fetch_array($result) ){
+        $data_result = $row;
+        $data_result['code'] = 200;
+        $data_result['msg'] = '';
+      }
+    }
   }
+
+
 
   // update request number
 
