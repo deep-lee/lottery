@@ -76,14 +76,14 @@ if (check_user_login_out_of_time() == false) {
             appid like '%".$search_text."%' or
             comment like '%".$search_text."%'";
     if ($login_user_id != 1) {
-      $sql .= ")";
+      $sql_total_rows .= ")";
       $sql_total_rows .= " and create_user_id=$login_user_id";
     } else {
-      $sql .= " or a.username like '%".$search_text."%')";
+      $sql_total_rows .= " or a.username like '%".$search_text."%')";
     }
   }
 
-  // echo $sql_total_rows;
+  echo $sql_total_rows;
 
   $result_total_rows = mysql_query($sql_total_rows);
   $row_total = mysql_fetch_array($result_total_rows);
