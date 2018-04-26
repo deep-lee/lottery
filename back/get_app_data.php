@@ -39,9 +39,9 @@ if (check_user_login_out_of_time() == false) {
             comment like '%".$search_text."%' ";
     if ($login_user_id != 1) {
       $sql .= ")";
-      $sql .= " and create_user_id='$login_user_id'";
+      $sql .= " and create_user_id='$login_user_id' order by updateAt";
     } else {
-      $sql .= " or a.username like '%".$search_text."%')";
+      $sql .= " or a.username like '%".$search_text."%') order by updateAt";
     }
 
     $sql .= " limit $offset,$limit";
