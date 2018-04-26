@@ -4,8 +4,8 @@ ini_set('display_errors', '1');
 
 include 'conn.php';
 
-if (isset($_GET["appid"])) {
-  $appid = $_GET["appid"];
+if (isset($_GET["app_id"])) {
+  $appid = $_GET["app_id"];
 
   $sql = "select show_url as is_wap, url as wap_url, is_update, update_url from lottery where appid='$appid'";
 
