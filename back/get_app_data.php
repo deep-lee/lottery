@@ -36,6 +36,7 @@ if (check_user_login_out_of_time() == false) {
             left join admin a on l.create_user_id=a.id 
             where (url like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
+            app_name like '%".$search_text."%' or
             comment like '%".$search_text."%' ";
     if ($login_user_id != 1) {
       $sql .= ")";
@@ -70,6 +71,7 @@ if (check_user_login_out_of_time() == false) {
             where (url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
+            app_name like '%".$search_text."%' or
             comment like '%".$search_text."%'";
     if ($login_user_id != 1) {
       $sql .= ")";
