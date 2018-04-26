@@ -68,7 +68,8 @@ if (check_user_login_out_of_time() == false) {
       $sql_total_rows .= " where create_user_id=$login_user_id";
     }
   } else {
-    $sql_total_rows = "select count(*) as total from lottery
+    $sql_total_rows = "select count(*) as total from lottery l
+            left join admin a on l.create_user_id=a.id 
             where (url like '%".$search_text."%' or
             appid like '%".$search_text."%' or
             qqNumber like '%".$search_text."%' or
