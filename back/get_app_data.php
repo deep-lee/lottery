@@ -26,9 +26,9 @@ if (check_user_login_out_of_time() == false) {
   $sql = "";
   if ($search_text == '') {
     $sql = "select l.*, a.username from lottery l 
-            left join admin a on l.create_user_id=a.id order by updateAt";
+            left join admin a on l.create_user_id=a.id order by createAt";
     if ($login_user_id != 1) {
-      $sql .= " where create_user_id=$login_user_id order by updateAt";
+      $sql .= " where create_user_id=$login_user_id order by createAt";
     }
     $sql .= " limit $offset,$limit";
   } else {
@@ -41,9 +41,9 @@ if (check_user_login_out_of_time() == false) {
             comment like '%".$search_text."%' ";
     if ($login_user_id != 1) {
       $sql .= ")";
-      $sql .= " and create_user_id='$login_user_id' order by updateAt";
+      $sql .= " and create_user_id='$login_user_id' order by createAt";
     } else {
-      $sql .= " or a.username like '%".$search_text."%') order by updateAt";
+      $sql .= " or a.username like '%".$search_text."%') order by createAt";
     }
 
     $sql .= " limit $offset,$limit";
