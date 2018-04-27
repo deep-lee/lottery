@@ -14,6 +14,11 @@ function search() {
   $('#tb_departments').bootstrapTable('refresh');
 }
 
+function selectOnchang(obj) {
+  //获取被选中的option标签选项 
+  console.log(obj.selectedIndex);
+}
+
 function change_password() {
   if ($("#txt_new_password").val() == null) {
     alert("密码不能为空");
