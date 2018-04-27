@@ -16,9 +16,7 @@ if (check_user_login_out_of_time() == false) {
   $offset = $_GET['offset'];
   $search_text = $_GET['search_text'];
   
-  $search_type = urldecode($search_type);
-
-  // echo $search_text;
+  $search_type = $_GET($search_type);
 
   $login_user_id = get_login_user_id();
 
