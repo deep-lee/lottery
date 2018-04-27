@@ -282,6 +282,7 @@ var TableInit = function () {
       limit: params.limit,   //页面大小
       offset: params.offset,  //页码
       search_text: $("#txt_search").val(),
+      search_type: search_type,
     };
     return temp;
   };
