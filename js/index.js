@@ -469,10 +469,13 @@ var ButtonInit = function () {
             success: function (data) {
               var rt_code = data.rt_code;
               if (rt_code == -1) {
+                console.log("-1");
                 alert("Something wrong, please contact dev.")
               } else if (rt_code == 0) {
+                console.log("0");
                 alert("Something wrong, please contact dev.")
               } else if (rt_code == 2) {
+                console.log("2");
                 // 有重复的appid
                 alert("Appid 重复");
               } else if (rt_code == -2) {
