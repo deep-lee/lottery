@@ -1,3 +1,5 @@
+var search_type = 0;
+
 $(function () {
 
   //1.初始化Table
@@ -16,7 +18,8 @@ function search() {
 
 function selectOnchang(obj) {
   //获取被选中的option标签选项 
-  console.log($("#id_search_type").selectedIndex);
+  search_type = obj.selectedIndex;
+  console.log(search_type);
 }
 
 function change_password() {
