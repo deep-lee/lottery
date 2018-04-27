@@ -75,7 +75,7 @@ if (check_user_login_out_of_time() == false) {
     }
   }
 
-  // echo $sql;
+  echo $sql;
 
   $result = mysql_query($sql);
 
