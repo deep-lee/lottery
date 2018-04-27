@@ -574,7 +574,7 @@ var ButtonInit = function () {
           $('input[id=optradio_edit_update_yes]').prop('checked', false);
           $('input[id=optradio_edit_update_false]').prop('checked', true);
         }
-        $("#txt_edit_update_url").val(arrselections[0].url);
+        $("#txt_edit_update_url").val(arrselections[0].update_url);
 
         if (arrselections[0].type == 'android') {
           $('input[id=optradio_edit_ios]').prop('checked', false);
