@@ -16,7 +16,7 @@ function search() {
 
 function selectOnchang(obj) {
   //获取被选中的option标签选项 
-  console.log(obj.selectedIndex);
+  console.log($("#id_search_type").selectedIndex);
 }
 
 function change_password() {
