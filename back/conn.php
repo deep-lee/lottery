@@ -8,5 +8,5 @@
 		die(mysql_error());
 	}
 
-	mysql_select_db("www_bai0837_com", $con);
+	mysql_select_db("app_manager", $con);
 ?>

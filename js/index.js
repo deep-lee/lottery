@@ -172,6 +172,7 @@ function set_not_show() {
 }
 
 function logout() {
+  console.log("logout");
   $.ajax({
     type: "get",
     contentType: "text/html;charset=utf-8",
@@ -505,7 +506,43 @@ var ButtonInit = function () {
           });
         }
       });
+    
+    $("#btn_logout").click(
+      function () {
+        $.ajax({
+          type: "get",
+          contentType: "text/html;charset=utf-8",
+          url: "./back/logout.php",
+          dataType: "json",
+          success: function (data) {
+            console.log(data);
+            var rt_code = data.rt_code;
+            if (rt_code == 1) {
+              location.href = "./login.html";
+            }
+          },
+          error: function () {
+            toastr.error('Error');
+          },
+          complete: function () {
+          }
+        });
+      });
 
+    $("#btn_search").click(
+      function () {
+        $('#tb_departments').bootstrapTable('refresh');
+      });
+    
+    $("#id_search_type").change(
+      function (obj) {
+        // console.log(obj);
+        var selected = $('#id_search_type option:selected').val();
+        // search_type = obj.selectedIndex;
+        console.log(selected);
+      }
+    );
+    
     $("#btn_multi_update").click(
       function () {
         var arrselections = $("#tb_departments").bootstrapTable(

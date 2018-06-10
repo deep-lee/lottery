@@ -1,5 +1,7 @@
 <?php
 
+header("Access-Control-Allow-Origin:http://www.houdau.com,http://www.my0916.com,http://www.nnokwa.com,http://www.a3moto.com,http://www.misgp.com");
+
 function check_user_login_out_of_time() {
   $admin = false;
   // 启动会话，这步必不可少

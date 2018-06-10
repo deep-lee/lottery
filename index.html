@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="templatemo">
 
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src www.houdau.com www.my0916.com www.nnokwa.com www.a3moto.com www.misgp.com;">
+
     <script src="js/jquery-1.11.3.min.js"></script>
 
     <script src="library/bootstrap/js/bootstrap.js"></script>
@@ -28,7 +30,7 @@
             <div class="panel-heading" id="text_welcome">欢迎你，</div>
             <div class="panel-body">
                 <div class="col-sm-4" style="text-align:left;">
-                    <button type="button" style="margin-left:50px" id="btn_query2" class="btn btn-primary" onclick="logout();">退出登录</button>
+                    <button type="button" style="margin-left:50px" id="btn_logout" class="btn btn-primary">退出登录</button>
                 </div>
                 <div class="col-sm-4" style="text-align:left;" id="register">
                     <button type="button" style="margin-left:50px" id="btn_register" class="btn btn-primary">注册帐号(仅供主帐号使用)</button>
@@ -48,13 +50,13 @@
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="txt_search">
                         </div>
-                        <select class="selectpicker control-label col-sm-1" onchange="selectOnchang(this)" id="id_search_type">
-                            <option>模糊搜索全局</option>
-                            <option>精确搜索应用ID</option>
-                            <option>精确搜索创建者</option>
+                        <select class="selectpicker control-label col-sm-1" id="id_search_type">
+                            <option value="0">模糊搜索全局</option>
+                            <option value="1">精确搜索应用ID</option>
+                            <option value="2">精确搜索创建者</option>
                         </select>                       
                         <div class="col-sm-5" style="text-align:left;">
-                            <button type="button" style="margin-left:50px" id="btn_query" class="btn btn-primary" onclick="search();">查询</button>
+                            <button type="button" style="margin-left:50px" id="btn_search" class="btn btn-primary"">查询</button>
                         </div>
                     </div>
                 </form>
