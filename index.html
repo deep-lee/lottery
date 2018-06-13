@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="templatemo">
 
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src www.houdau.com www.my0916.com www.nnokwa.com www.a3moto.com www.misgp.com;">
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src www.houdau.com www.my0916.com www.nnokwa.com www.a3moto.com www.misgp.com;"> -->
 
     <script src="js/jquery-1.11.3.min.js"></script>
 
@@ -75,6 +75,9 @@
             </button>
             <button id="btn_delete" type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+            </button>
+            <button id="btn_add_scheduled_task" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>设置定时任务
             </button>
         </div>
         <table id="tb_departments"></table>
@@ -360,6 +363,44 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
                             <button type="button" id="btn_update_password_submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form class="add_task_form">
+        <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">添加定时任务</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="txt_price">开关</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="add_task_switch_type" id="optradio_switch_open" value="open"> 开启
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="add_task_switch_type" id="optradio_switch_close" value="close"> 关闭
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txt_price">时间</label>
+                            <input type="text" name="txt_add_task_command" class="form-control" id="txt_update_password" placeholder="设置时间">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Close</关闭>
+                            <button type="button" id="btn_add_task_submit" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交</button>
                     </div>
                 </div>
