@@ -333,6 +333,34 @@ function check_update_password_params_empty() {
   return flag;
 }
 
+function check_add_task_params_empty() {
+
+  var flag = true;
+
+  if ($("#txt_add_task_command").val() == '') {
+    flag = false;
+  } else if ($("input[name='add_task_switch_type']:checked").val() == null) {
+    flag = false;
+  }
+
+  return flag;
+}
+
+function get_add_task_params() {
+
+  var switch_type = '';
+  if ($("input[name='add_task_switch_type']:checked").val() == 'open' || $("input[name='add_task_switch_type']:checked").val() == 'close') {
+    switch_type = $("input[name='add_task_switch_type']:checked").val() == 'open' ? 1 : 0;
+  }
+
+  var requestData = {
+    "switch_type": switch_type,
+    "command": $("#txt_add_task_command").val(),
+  };
+
+  return requestData;
+}
+
 
 function get_update_password_params() {
   var requestData = {
@@ -687,6 +715,19 @@ var ButtonInit = function () {
         $('#myModal3').modal();
       });
 
+    $("#btn_add_scheduled_task").click(
+      function () {
+        var arrselections = $("#tb_departments").bootstrapTable(
+          'getSelections');
+
+        if (arrselections.length <= 0) {
+          alert("请选择需要添加的条目");
+          return;
+        }
+
+        $('#myModal6').modal();
+      });
+
 
     $("#btn_register_submit").click(
       function () {
@@ -739,6 +780,43 @@ var ButtonInit = function () {
           alert("请填写完整");
         } else {
           var requestData = get_update_password_params();
+          $.ajax({
+            type: "get",
+            contentType: "text/html;charset=utf-8",
+            url: "./back/change_password.php",
+            data: requestData,
+            dataType: "json",
+            success: function (data) {
+              var rt_code = data.rt_code;
+              if (rt_code == -1) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == 0) {
+                alert("Something wrong, please contact dev.")
+              } else if (rt_code == 3) {
+                alert("更新失败！目前只支持主帐号修改子账户密码")
+              } else {
+                alert("更新密码成功")
+                console.log("update password success");
+                $('#myModal3').modal('hide');
+              }
+            },
+            error: function () {
+              toastr.error('Error');
+            },
+            complete: function () {
+
+            }
+
+          });
+        }
+      });
+
+    $("#btn_add_task_submit").click(
+      function () {
+        if (!check_add_task_params_empty()) {
+          alert("请填写完整");
+        } else {
+          var requestData = get_add_task_params();
           $.ajax({
             type: "get",
             contentType: "text/html;charset=utf-8",
