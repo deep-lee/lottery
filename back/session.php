@@ -1,5 +1,7 @@
 <?php
 
+header("Access-Control-Allow-Origin:http://www.ds06ji.com,http://www.ww88op.com,http://www.jh06ip.com,http://www.huj18m.com,http://www.hhuo2l.com");
+
 function check_user_login_out_of_time() {
   $admin = false;
   // 启动会话，这步必不可少

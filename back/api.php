@@ -1,12 +1,14 @@
 <?php
+header('Content-type:text/html; charset=gbk');
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 include 'conn.php';
+include 'My.php';
 
 if (isset($_GET["app_id"])) {
   $appid = $_GET["app_id"];
-
+  
   $sql = "select show_url as is_wap, url as wap_url, is_update, update_url from lottery where appid='$appid'";
 
   // echo $sql;
@@ -46,7 +48,7 @@ if (isset($_GET["app_id"])) {
     }
   }
 
-  echo json_encode($data_result);
+  MySuccess4($data_result);
 
 } else {
   $data_result = array();

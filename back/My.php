@@ -35,6 +35,13 @@ function MySuccess3($data, $code)
     die($result);
 }
 
+function MySuccess4($data)
+{
+    $json = json_encode($data);
+  	$result = base64_encode($json);
+    die($result);
+}
+
 //返回API执行结果（执行die输出）
 function MySuccess2($data, $code)
 {
